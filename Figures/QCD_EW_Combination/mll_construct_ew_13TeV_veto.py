@@ -16,15 +16,16 @@ lo_centre=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_qq_lo_centre.npy")
 del_nloew_centre=nloew_centre/lo_centre
 
 #We need to do this because MATRIX does not tell us which scale the different 
+#This is ok because the EW corrections are approximately the same at each scale 
 
 nnllnnlonloew_centre=nnllnnlo_centre*del_nloew_centre
 nnllnnlonloew_min=nnllnnlo_min*del_nloew_centre
 nnllnnlonloew_max=nnllnnlo_max*del_nloew_centre
 
 
-np.save("mll_13TeV_veto35_sm_qq_nnllnnlo_qcd_nlo_ew_centre", nnllnnlonloew_centre)
-np.save("mll_13TeV_veto35_sm_qq_nnllnnlo_qcd_nlo_ew_min", nnllnnlonloew_min)
-np.save("mll_13TeV_veto35_sm_qq_nnllnnlo_qcd_nlo_ew_max", nnllnnlonloew_max)
+np.save("mll_13TeV_veto35_sm_qq_nnllnnlo_qcd_cross_nlo_ew_centre", nnllnnlonloew_centre)
+np.save("mll_13TeV_veto35_sm_qq_nnllnnlo_qcd_cross_nlo_ew_min", nnllnnlonloew_min)
+np.save("mll_13TeV_veto35_sm_qq_nnllnnlo_qcd_cross_nlo_ew_max", nnllnnlonloew_max)
 
 
 

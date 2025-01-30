@@ -22,6 +22,7 @@ print(lo_centre)
 del_nloew_centre=nloew_centre/lo_centre
 
 #We need to do this because MATRIX does not tell us which scale the different 
+#This is ok because the EW corrections are approximately the same at each scale 
 
 nnllnnlonloew_centre=nnllnnlo_centre*del_nloew_centre
 nnllnnlonloew_min=nnllnnlo_min*del_nloew_centre
