@@ -155,10 +155,9 @@ def kgtilde_to_max_bin(factor_vals):
     return which_bin
 
 
-#kg_vals=np.linspace(-10, 10, 600)
-#kgtilde_vals=np.linspace(-10, 10, 600)
-kg_vals=np.linspace(-2, 2, 1000)
-kgtilde_vals=np.linspace(-2, 2, 1000)
+
+kg_vals=np.linspace(-3, 3, 2000)
+kgtilde_vals=np.linspace(-3, 3, 2000)
 def round_to_5(x):
     rounded=[]
     for i in range(len(x)):
@@ -172,88 +171,20 @@ systematic_error=sm*((4.863706128 + bin_centres*0.019542609)/100)
 
 points_x, points_y, deltachisqs_all=produce_contours_ATLAS(kg_vals, kgtilde_vals, sm, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg_to_max_bin, kgtilde_to_max_bin, systematic_error=systematic_error)
 
+np.save("points_x_kg_syst", np.array(points_x))
+np.save("points_y_kg_syst", np.array(points_y))
+np.save("deltachisqs_all_syst", np.array(deltachisqs_all))
 
 
-def fmt(x):
-    s = f"{x:.1f}"
-    if s.endswith("0"):
-        s = f"{x:.0f}"
-    if float(s)==-1.1:
-        return r"minimum" if plt.rcParams["text.usetex"] else "minimum"
-    if float(s)==3.2:
-        return r"p=0.2" if plt.rcParams["text.usetex"] else "p=0.2"
-    if float(s)==6:
-        return r"p=0.05" if plt.rcParams["text.usetex"] else "p=0.05"
-    if float(s)==13.8:
-        return r"p=0.001" if plt.rcParams["text.usetex"] else "p=0.001"
 
-
-# Basic contour plot
-
-
-fig, ax = plt.subplots(figsize=(1.1*10, 1.1*(2/3)*10), dpi=100)
-#plt.plot(contour_x_001, contour_y_001, '.', markersize=0.01)
-CS = ax.contour(points_x, points_y, deltachisqs_all, levels=[3.219, 5.991, 13.816], linewidths=3)
-ax.clabel(CS, CS.levels, inline=True, fmt=fmt, fontsize=16)
-#plt.contourf(points_x, points_y, np.log(deltachisqs_all+3), alpha=0.7)#, #levels=[-2, 0, 4, 6, 8, 10, 12, 14, 20])
-#plt.contourf(points_x, points_y, deltachisqs_all, levels=[3.219, 5.991, 13.816], alpha=0.7)#, #levels=[-2, 0, 4, 6, 8, 10, 12, 14, 20])
-
-plt.ylabel(r"$\kappa_\tilde{g}$", fontsize=20)
-plt.xlabel(r"$\kappa_g$", fontsize=20)
-plt.plot([-0.6/3, 0.4/3], [2/3, 2/3], '--', color="k", label="Projection for HL-LHC Higgs", markersize=14)
-plt.plot([-0.6/3, 0.4/3], [-2/3, -2/3], '--', color="k", markersize=14)
-plt.plot([-0.6/3, -0.6/3], [-2/3, 2/3], '--', color="k", markersize=14)
-plt.plot([0.4/3, 0.4/3], [-2/3, 2/3], '--', color="k", markersize=14)
-plt.plot(0, 0, 'x', color="r", label="Standard Model", markersize=10)
-plt.xlim(-4.5, 4.5)
-plt.ylim(-(2/3)*4.5, (2/3)*4.5)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend(fontsize=16, loc="lower right")
-plt.savefig("contour_kg_better_syst.pdf")
-
-
-kg_vals=np.linspace(-1.5, 1.5, 1000)
-kgtilde_vals=np.linspace(-1.5, 1.5, 1000)
+kg_vals=np.linspace(-1.5, 1.5, 2000)
+kgtilde_vals=np.linspace(-1.5, 1.5, 2000)
 
 points_x, points_y, deltachisqs_all=produce_contours_ATLAS(kg_vals, kgtilde_vals, sm, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg_to_max_bin, kgtilde_to_max_bin)
 
 
-
-def fmt(x):
-    s = f"{x:.1f}"
-    if s.endswith("0"):
-        s = f"{x:.0f}"
-    if float(s)==-1.1:
-        return r"minimum" if plt.rcParams["text.usetex"] else "minimum"
-    if float(s)==3.2:
-        return r"p=0.2" if plt.rcParams["text.usetex"] else "p=0.2"
-    if float(s)==6:
-        return r"p=0.05" if plt.rcParams["text.usetex"] else "p=0.05"
-    if float(s)==13.8:
-        return r"p=0.001" if plt.rcParams["text.usetex"] else "p=0.001"
+np.save("points_x_kg_nosyst", np.array(points_x))
+np.save("points_y_kg_nosyst", np.array(points_y))
+np.save("deltachisqs_all_nosyst", np.array(deltachisqs_all))
 
 
-# Basic contour plot
-
-
-fig, ax = plt.subplots(figsize=(1.1*10, 1.1*(2/3)*10), dpi=100)
-#plt.plot(contour_x_001, contour_y_001, '.', markersize=0.01)
-CS = ax.contour(points_x, points_y, deltachisqs_all, levels=[3.219, 5.991, 13.816], linewidths=3)
-ax.clabel(CS, CS.levels, inline=True, fmt=fmt, fontsize=16)
-#plt.contourf(points_x, points_y, np.log(deltachisqs_all+3), alpha=0.7)#, #levels=[-2, 0, 4, 6, 8, 10, 12, 14, 20])
-#plt.contourf(points_x, points_y, deltachisqs_all, levels=[3.219, 5.991, 13.816], alpha=0.7)#, #levels=[-2, 0, 4, 6, 8, 10, 12, 14, 20])
-
-plt.ylabel(r"$\kappa_\tilde{g}$", fontsize=20)
-plt.xlabel(r"$\kappa_g$", fontsize=20)
-plt.plot([-0.6/3, 0.4/3], [2/3, 2/3], '--', color="k", label="Projection for HL-LHC Higgs", markersize=14)
-plt.plot([-0.6/3, 0.4/3], [-2/3, -2/3], '--', color="k", markersize=14)
-plt.plot([-0.6/3, -0.6/3], [-2/3, 2/3], '--', color="k", markersize=14)
-plt.plot([0.4/3, 0.4/3], [-2/3, 2/3], '--', color="k", markersize=14)
-plt.plot(0, 0, 'x', color="r", label="Standard Model", markersize=10)
-plt.xlim(-4.5, 4.5)
-plt.ylim(-(2/3)*4.5, (2/3)*4.5)
-plt.xticks(fontsize=16)
-plt.yticks(fontsize=16)
-plt.legend(fontsize=16, loc="lower right")
-plt.savefig("contour_kg_better_nosyst.pdf")

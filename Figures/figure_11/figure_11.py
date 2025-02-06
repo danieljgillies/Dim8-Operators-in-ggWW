@@ -49,7 +49,7 @@ secay.set_ylabel(r'Equivalent $\Lambda\,$[TeV]', fontsize=28)
 
 CS = ax.contour(points_x, points_y, deltachisqs_all, levels=[3.219, 5.991, 13.816], linewidths=3)
 ax.clabel(CS, CS.levels, inline=True, fmt=fmt, fontsize=16)
-plt.ylabel(r"$\kappa_\tilde{g}$", fontsize=28)
+plt.ylabel(r"$\tilde\kappa_g$", fontsize=28)
 plt.xlabel(r"$\kappa_g$", fontsize=28)
 plt.plot([-0.6, 0.4], [2, 2], '--', color="k", label="On-shell Higgs constraints", markersize=14)
 plt.plot([-0.6, 0.4], [-2, -2], '--', color="k", markersize=14)
@@ -157,7 +157,7 @@ ax.add_patch(polygon)
 """
 
 
-plt.ylabel(r"$\kappa_\tilde{g}$", fontsize=28)
+plt.ylabel(r"$\tilde\kappa_g$", fontsize=28)
 plt.xlabel(r"$\kappa_g$", fontsize=28)
 plt.plot([-0.6, 0.4], [2, 2], '--', color="k", label="On-shell Higgs constraints", markersize=14)
 plt.plot([-0.6, 0.4], [-2, -2], '--', color="k", markersize=14)
