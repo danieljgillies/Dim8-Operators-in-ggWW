@@ -5,6 +5,7 @@ import sys
 sys.path.insert(1, '..')
 
 from factor_conversions import fac2lam, lam2fac
+from plot_funcs import fmt
 
 points_x_nosyst=np.load("points_x_k1_fo_nosyst.npy")
 points_y_nosyst=np.load("points_y_k4_fo_nosyst.npy")
@@ -14,20 +15,7 @@ points_x_syst=np.load("points_x_k1_fo_syst.npy")
 points_y_syst=np.load("points_y_k4_fo_syst.npy")
 deltachisqs_all_syst=np.load("deltachisqs_all_fo_syst.npy")
 
-def fmt(x):
-    s = f"{x:.1f}"
-    if s.endswith("0"):
-        s = f"{x:.0f}"
-    if float(s)==-1.1:
-        return r"minimum" if plt.rcParams["text.usetex"] else "minimum"
-    if float(s)==3.2:
-        return r"p=0.2" if plt.rcParams["text.usetex"] else "p=0.2"
-    if float(s)==6:
-        return r"p=0.05" if plt.rcParams["text.usetex"] else "p=0.05"
-    if float(s)==13.8:
-        return r"p=0.001" if plt.rcParams["text.usetex"] else "p=0.001"
 
-     
 
 # Basic contour plot
 

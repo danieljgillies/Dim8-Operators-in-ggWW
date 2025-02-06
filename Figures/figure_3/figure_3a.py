@@ -1,16 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from math import log10, floor
 
+import sys
+sys.path.insert(1, '..')
 
-def round_to_5(x):
-    rounded=[]
-    for i in range(len(x)):
-        rounded.append(np.round(x[i], 6-int(floor(log10(abs(x[i]))))))
-    return np.array(rounded)
-
-def array_for_plot(a):
-    return np.concatenate((np.array([a[0]]), a, np.array([a[len(a)-1]])))
+from plot_funcs import round_to_5, array_for_plot
 
 bins=round_to_5(np.logspace(np.log10(200), np.log10(4000), 17))
 print(bins)

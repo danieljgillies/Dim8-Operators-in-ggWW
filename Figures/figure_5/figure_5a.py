@@ -1,15 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from math import log10, floor
 
-def array_for_plot(a):
-    return np.concatenate((np.array([a[0]]), a, np.array([a[len(a)-1]])))
+import sys
+sys.path.insert(1, '..')
 
-def round_to_5(x):
-    rounded=[]
-    for i in range(len(x)):
-        rounded.append(np.round(x[i], 6-int(floor(log10(abs(x[i]))))))
-    return np.array(rounded)
+from plot_funcs import round_to_5, array_for_plot
 
 bins=round_to_5(np.logspace(np.log10(200), np.log10(4000), 17))
 print(bins)
@@ -217,31 +212,31 @@ print(nnllnnlonloew_centre/6000)
 print(nnllnnlonloew_max/6000)
 print(nnllnnlonloew_min/6000)
 
-nlophoton_centre=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_centre.npy"))
-nlophoton_min=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_min.npy"))
-nlophoton_max=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_max.npy"))
+nlophoton_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_centre.npy"))
+nlophoton_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_min.npy"))
+nlophoton_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_max.npy"))
 
 
 print(nlophoton_centre/6000)
 print(nlophoton_max/6000)
 print(nlophoton_min/6000)
 
-ggnll_centre=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_centre.npy"))
-ggnll_min=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_min.npy"))
-ggnll_max=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_max.npy"))
+ggnll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_centre.npy"))
+ggnll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_min.npy"))
+ggnll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_max.npy"))
 
 
 
 
-ggnll_050050050=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-ggnll_050050025=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-ggnll_050050100=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-ggnll_025025050=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-ggnll_025050050=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-ggnll_050025050=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-ggnll_050100050=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-ggnll_100050050=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-ggnll_100100050=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+ggnll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
+ggnll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
+ggnll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
+ggnll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
+ggnll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
+ggnll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
+ggnll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+ggnll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
+ggnll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
 
 print(ggnll_050050050/(6000*bin_widths18))
 

@@ -5,25 +5,13 @@ import sys
 sys.path.insert(1, '..')
 
 from factor_conversions import fac2lam, lam2fac
+from plot_funcs import fmt
+
 
 points_x=np.load("points_x_k2.npy")
 points_y=np.load("points_y_k3.npy")
 deltachisqs_all=np.load("deltachisqs_all.npy")
 
-def fmt(x):
-    s = f"{x:.1f}"
-    if s.endswith("0"):
-        s = f"{x:.0f}"
-    if float(s)==-1.1:
-        return r"minimum" if plt.rcParams["text.usetex"] else "minimum"
-    if float(s)==3.2:
-        return r"p=0.2" if plt.rcParams["text.usetex"] else "p=0.2"
-    if float(s)==6:
-        return r"p=0.05" if plt.rcParams["text.usetex"] else "p=0.05"
-    if float(s)==13.8:
-        return r"p=0.001" if plt.rcParams["text.usetex"] else "p=0.001"
-
-     
 
 # Basic contour plot
 

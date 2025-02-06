@@ -1,15 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from math import log10, floor
 
-def array_for_plot(a):
-    return np.concatenate((np.array([a[0]]), a, np.array([a[len(a)-1]])))
+import sys
+sys.path.insert(1, '..')
 
-def round_to_5(x):
-    rounded=[]
-    for i in range(len(x)):
-        rounded.append(np.round(x[i], 6-int(floor(log10(abs(x[i]))))))
-    return np.array(rounded)
+from plot_funcs import round_to_5, array_for_plot
 
 bins=round_to_5(np.logspace(np.log10(200), np.log10(4000), 17))
 print(bins)
@@ -266,26 +261,26 @@ nnlonloew_noveto_200200=2*3000*array_for_plot(np.load("../QCD_EW_Combination/mll
 
 
 
-nlophoton_noveto_1=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_mufac=0.5MWW.npy"))
-nlophoton_noveto_05=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_mufac=0.25MWW.npy"))
-nlophoton_noveto_2=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_mufac=1.0MWW.npy"))
+nlophoton_noveto_1=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_mufac=0.5MWW.npy"))
+nlophoton_noveto_05=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_mufac=0.25MWW.npy"))
+nlophoton_noveto_2=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_mufac=1.0MWW.npy"))
 
-nlophoton_noveto_centre=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_centre.npy"))
-nlophoton_noveto_min=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_min.npy"))
-nlophoton_noveto_max=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_max.npy"))
+nlophoton_noveto_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_centre.npy"))
+nlophoton_noveto_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_min.npy"))
+nlophoton_noveto_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_max.npy"))
 
-gglo_centre=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_centre.npy"))
-gglo_max=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_max.npy"))
-gglo_min=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_min.npy"))
+gglo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_centre.npy"))
+gglo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_max.npy"))
+gglo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_min.npy"))
 
 
-gglo_050050=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
-gglo_025025=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-gglo_025050=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-gglo_050025=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-gglo_050100=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-gglo_100050=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-gglo_100100=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+gglo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+gglo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
+gglo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
+gglo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
+gglo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
+gglo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
+gglo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
 
 nnlonloew_noveto_centre=2*3000*array_for_plot(np.load("../QCD_EW_Combination/mll_14TeV_noveto_sm_qq_nnlo_qcd_cross_nlo_ew_centre.npy"))
 nnlonloew_noveto_min=2*3000*array_for_plot(np.load("../QCD_EW_Combination/mll_14TeV_noveto_sm_qq_nnlo_qcd_cross_nlo_ew_min.npy"))

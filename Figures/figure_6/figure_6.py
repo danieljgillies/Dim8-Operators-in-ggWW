@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 
-def array_for_plot(a):
-    return np.concatenate((np.array([a[0]]), a, np.array([a[len(a)-1]])))
+sys.path.insert(1, '..')
 
+from plot_funcs import array_for_plot
 
 bins = [55, 75, 85, 95, 110, 125, 140, 160, 185, 220, 280, 380, 600, 1500]
 
@@ -139,8 +140,8 @@ print(nnllnnlonloew_ggphoton_min)
 print(nnllnnlonloew_ggphoton_max)
 
 """
-atlas15=2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_atlas.npy"))
-atlas15_err=2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_atlas_err.npy"))
+atlas15=2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_atlas.npy"))
+atlas15_err=2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_atlas_err.npy"))
 
 
 nnllnnlonloew_ggphoton_centre=2*array_for_plot(np.load("../SM_Construction/mll_13TeV_veto35_sm_centre.npy"))

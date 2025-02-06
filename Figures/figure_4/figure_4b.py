@@ -1,15 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from math import log10, floor
 
-def array_for_plot(a):
-    return np.concatenate((np.array([a[0]]), a, np.array([a[len(a)-1]])))
+import sys
+sys.path.insert(1, '..')
 
-def round_to_5(x):
-    rounded=[]
-    for i in range(len(x)):
-        rounded.append(np.round(x[i], 6-int(floor(log10(abs(x[i]))))))
-    return np.array(rounded)
+from plot_funcs import round_to_5, array_for_plot
 
 
 bins=round_to_5(np.logspace(np.log10(200), np.log10(4000), 17))
@@ -96,9 +91,9 @@ nlophoton_err=(nlophoton_max-nlophoton_min)/2
 
 total_err=(nnllnnlonloew_err**2 + nlophoton_err**2)**0.5
 """
-nnllnnlo_centre=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_centre.npy"))
-nnllnnlo_min=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_min.npy"))
-nnllnnlo_max=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_max.npy"))
+nnllnnlo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_centre.npy"))
+nnllnnlo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_min.npy"))
+nnllnnlo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_max.npy"))
 
 #print("fi")
 #print(nnllnnlonloew_centre/6000)
@@ -114,9 +109,9 @@ print(nnllnnlonloew_centre/6000)
 print(nnllnnlonloew_max/6000)
 print(nnllnnlonloew_min/6000)
 
-nlophoton_centre=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_centre.npy"))
-nlophoton_min=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_min.npy"))
-nlophoton_max=2*3000*array_for_plot(np.load("../Data/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_max.npy"))
+nlophoton_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_centre.npy"))
+nlophoton_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_min.npy"))
+nlophoton_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gammagamma_nlo_max.npy"))
 
 
 print(nlophoton_centre/6000)

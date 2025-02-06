@@ -1,10 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
+sys.path.insert(1, '..')
 
-
-def array_for_plot(a):
-    return np.concatenate((np.array([a[0]]), a, np.array([a[len(a)-1]])))
-
+from plot_funcs import array_for_plot
 
 bins = [55, 75, 85, 95, 110, 125, 140, 160, 185, 220, 280, 380, 600, 1500]
 
@@ -489,8 +488,8 @@ atlas = 36.1*bin_sizes15*np.array([3.453, 3.453, 3.767, 3.538, 3.094, 2.228, 1.8
 atlas_err= 36.1*bin_sizes15*np.array([0.247115358, 0.247115358, 0.270325729, 0.271781162, 0.219636063, 0.192608411, 0.177392221, 0.132056806, 0.106901824, 0.075608201, 0.035838248, 0.01877232, 0.004532494, 0.000427902, 0.000427902])
 print(atlas)
 """
-atlas=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_atlas.npy"))
-atlas_err= 36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_atlas_err.npy"))
+atlas=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_atlas.npy"))
+atlas_err= 36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_atlas_err.npy"))
 
 print(atlas)
 nnllnnlonloew_ggphoton_centre=36.1*2*array_for_plot(np.load("../SM_Construction/mll_13TeV_veto35_sm_centre.npy"))
@@ -505,29 +504,29 @@ print("test")
 
 print(atlas/(36.1*bin_sizes15))
 
-mcfm_nll_kg2=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_centre.npy"))
-mcfm_nll_kg2_min=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_min.npy"))
-mcfm_nll_kg2_max=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_max.npy"))
+mcfm_nll_kg2=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_centre.npy"))
+mcfm_nll_kg2_min=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_min.npy"))
+mcfm_nll_kg2_max=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_max.npy"))
 
 
-mcfm_nll_kg=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_centre.npy"))
-mcfm_nll_kg_min=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_min.npy"))
-mcfm_nll_kg_max=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_max.npy"))
+mcfm_nll_kg=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_centre.npy"))
+mcfm_nll_kg_min=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_min.npy"))
+mcfm_nll_kg_max=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_max.npy"))
 
 
-mcfm_nll_kt2=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHsq_nll_qcd_centre.npy"))
-mcfm_nll_kt2_min=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHsq_nll_qcd_min.npy"))
-mcfm_nll_kt2_max=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHsq_nll_qcd_max.npy"))
+mcfm_nll_kt2=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHsq_nll_qcd_centre.npy"))
+mcfm_nll_kt2_min=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHsq_nll_qcd_min.npy"))
+mcfm_nll_kt2_max=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHsq_nll_qcd_max.npy"))
 
 
-mcfm_nll_kgkt=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHOTHint_nll_qcd_centre.npy"))
-mcfm_nll_kgkt_min=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHOTHint_nll_qcd_min.npy"))
-mcfm_nll_kgkt_max=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHOTHint_nll_qcd_max.npy"))
+mcfm_nll_kgkt=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHOTHint_nll_qcd_centre.npy"))
+mcfm_nll_kgkt_min=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHOTHint_nll_qcd_min.npy"))
+mcfm_nll_kgkt_max=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHOTHint_nll_qcd_max.npy"))
 
 
-mcfm_nll_kt=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHSMint_nll_qcd_centre.npy"))
-mcfm_nll_kt_min=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHSMint_nll_qcd_min.npy"))
-mcfm_nll_kt_max=36.1*2*array_for_plot(np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHSMint_nll_qcd_max.npy"))
+mcfm_nll_kt=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHSMint_nll_qcd_centre.npy"))
+mcfm_nll_kt_min=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHSMint_nll_qcd_min.npy"))
+mcfm_nll_kt_max=36.1*2*array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OTHSMint_nll_qcd_max.npy"))
 
 
 
