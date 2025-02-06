@@ -3,7 +3,6 @@
 title: "Dimension-8 Operators in W^+ W^- production via gluon fusion."
 author: "Daniel James Gillies"
 date: 06-02-25
-
 ---
 
 # Dimension-8 Operators in \( W^+ W^- \) production via gluon fusion.
