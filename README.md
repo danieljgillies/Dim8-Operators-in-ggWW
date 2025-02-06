@@ -1,7 +1,7 @@
 ---
 title: "Dimension-8 Operators in \( W^+ W^- \) production via gluon fusion."
 author: "Daniel James Gillies"
-date: \today
+date: "Today"
 fontsize: 12pt
 fontfamily: times
 ---
