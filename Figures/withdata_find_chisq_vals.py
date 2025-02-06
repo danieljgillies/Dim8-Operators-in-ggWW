@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
 from scipy.optimize import minimize, basinhopping, shgo
+from factor_conversions import kg2lam, kgtilde2lam, fac2lam
 
 def _chisq(expected, observed, _delta, min_bin, max_bin):
     """
@@ -40,7 +41,7 @@ def _chisq(expected, observed, _delta, min_bin, max_bin):
         raise("Error unexpected number of bins")
 
 
-def produce_contours_ATLAS(factor_operatorA_vals, factor_operatorB_vals, atlas_data, atlas_err, generate_bsm_prediction, operatorAlambda_to_factor, operatorBlambda_to_factor, operatorAfactor_to_max_bin, operatorBfactor_to_max_bin, min_bin=0):#, SM_pred, Delta (Only needed for pseudodata case)
+def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_vals, atlas_data, atlas_err, generate_bsm_prediction, operatorAlambda_to_factor, operatorBlambda_to_factor, operatorAfactor_to_lambda, operatorBfactor_to_lambda, operatorAfactor_to_max_bin, operatorBfactor_to_max_bin, min_bin=0):#, SM_pred, Delta (Only needed for pseudodata case)
     """
 
     This function takes in experimental data, along with SM and BSM predictions which must be given using\
@@ -53,6 +54,8 @@ def produce_contours_ATLAS(factor_operatorA_vals, factor_operatorB_vals, atlas_d
     ----------
 
     Inputs:
+
+    run_name (string): Name for run to be used in plot outputs.
 
     factor_operatorA_vals (np.array dim(n)): List of factors to be considered for the operator. This can be given either in ($\frac{c}{\Lambda}$) \
     or in the kappa formalism but the functions factor to Lambda and Lambda to factor must be modified \
@@ -67,13 +70,18 @@ def produce_contours_ATLAS(factor_operatorA_vals, factor_operatorB_vals, atlas_d
     generate_bsm_prediction: Function which takes in two factors for the operators A and B and returns a BSM prediction (with errors).
     
     operatorAlambda_to_factor (func): User defined function which returns  the factor (inputted to the "generate_bsm_prediction") associated with a given mass scale.\
-    This is usually done by taking some assumption (i.e wilson c=1). "generate_bsm_prediction" could take a value in the kappa formalism or a factor which rescales \
-    the contribution relative to another value of Lambda. It is up to the user to ensure consistency.
+    This is usually done by taking some assumption (i.e wilson |c|=1). "generate_bsm_prediction" could take a value in the kappa formalism or a factor which rescales \
+    the contribution relative to another value of Lambda. It is up to the user to ensure consistency. This function should also preserve the sign of lambda to indicate \
+    if c is +/- 1.
 
     operatorBlambda_to_factor (func): Same function as above but for operator B.
+
+    operatorAfactor_to_lambda (func): Inverse of function operatorAlambda_to_factor.
+
+    operatorBfactor_to_lambda (func): Same function as above but for operator B.
     
     operatorAfactor_to_max_bin (func): User defined function which returns the maximum bin which should be used when considering the operator with a given\
-    factor. Usually done by taking some assumption (i.e wilson c=1) and finding the appropriate Mass scale this then informs (with more assumptions) which \
+    factor. Usually done by taking some assumption (i.e wilson |c|=1) and finding the appropriate Mass scale this then informs (with more assumptions) which \
     bins can be used.
 
     operatorBfactor_to_max_bin(func): Same function as above but for operator B. 
@@ -95,7 +103,7 @@ def produce_contours_ATLAS(factor_operatorA_vals, factor_operatorB_vals, atlas_d
 
     max_bin_operatorA=operatorAfactor_to_max_bin(factor_operatorA_vals)
     max_bin_operatorB=operatorBfactor_to_max_bin(factor_operatorB_vals)
-    
+
     #We define a function to minimise the chisquared value based on two input coefficients a1[0], a1[1]
     def _chisq_tominimize(a1, s, max_bin):
         prediction=generate_bsm_prediction(a1[0], a1[1])
@@ -113,14 +121,14 @@ def produce_contours_ATLAS(factor_operatorA_vals, factor_operatorB_vals, atlas_d
             current_chisqs.append(0)
         else:
             max_bin=i
-            minimizer_kwargs = {
-                "args": (atlas_data, max_bin)
-            }
+            #minimizer_kwargs = {
+            #    "args": (atlas_data, max_bin)
+            #}
             #Use the basinhopping method to find the global minimum (global minimum appears to be stable)
             #res=basinhopping(_chisq_tominimize, x0=[0, 0], niter=100,  minimizer_kwargs=minimizer_kwargs)
             #shgo works well and requires bounds on the factor (these can be given by the minimum mass scale)
             res=shgo(_chisq_tominimize, bounds=[(operatorAlambda_to_factor(-max_mass_scales[i-1]), operatorAlambda_to_factor(max_mass_scales[i-1])),(operatorBlambda_to_factor(-max_mass_scales[i-1]), operatorBlambda_to_factor(max_mass_scales[i-1]))],  args=(atlas_data, max_bin))
-
+            #res=minimize(_chisq_tominimize, x0=[5, 5], args=(atlas_data, max_bin))
             current_chisqs.append(res.fun)
     
     
@@ -130,7 +138,7 @@ def produce_contours_ATLAS(factor_operatorA_vals, factor_operatorB_vals, atlas_d
     plt.figure()
     plt.plot(current_chisqs)
     #plt.plot(current_chisqs/a)
-    plt.savefig("current_chisqs.pdf")
+    plt.savefig("current_chisqs_"+run_name+".pdf")
     
 
     #Define a list of x and y values that are considered.
@@ -138,7 +146,7 @@ def produce_contours_ATLAS(factor_operatorA_vals, factor_operatorB_vals, atlas_d
     points_y=[]
     #Define a list for the corresponding delta chi squared values.
     deltachisqs_all=[]
-
+    l=0 
     for i in tqdm(range(0, len(factor_operatorA_vals))):
         #We create a 2d grid of values 
         temp_points_x=[]
@@ -147,6 +155,13 @@ def produce_contours_ATLAS(factor_operatorA_vals, factor_operatorB_vals, atlas_d
 
         for j in range(0, len(factor_operatorB_vals)):
             max_bin=min([max_bin_operatorA[i], max_bin_operatorB[j]])
+
+
+            #Set factors currently being considered
+            factor_operatorA=factor_operatorA_vals[i]
+            factor_operatorB=factor_operatorB_vals[j]
+
+
             if max_bin<min_bin+2 :
                 #Cannot constrain with less than two bins
                 temp_points_x.append(factor_operatorA)
@@ -154,9 +169,6 @@ def produce_contours_ATLAS(factor_operatorA_vals, factor_operatorB_vals, atlas_d
                 temp_deltachisqs_all.append(0)
                 continue
 
-            #Set factors currently being considered
-            factor_operatorA=factor_operatorA_vals[i]
-            factor_operatorB=factor_operatorB_vals[j]
 
             #Generate prediction
             prediction=generate_bsm_prediction(factor_operatorA, factor_operatorB)
@@ -166,6 +178,44 @@ def produce_contours_ATLAS(factor_operatorA_vals, factor_operatorB_vals, atlas_d
             #Find the chi squared of prediction and subtract best prediction for given number of bins.
             deltachisqs=_chisq(prediction[0], atlas_data, delta, min_bin, max_bin) - current_chisqs[max_bin]
             
+            
+            #Sanity Check
+            
+            if deltachisqs > 5.9 and deltachisqs < 6 and l==0:
+                plt.figure()
+                plt.plot(prediction[0][min_bin:max_bin])
+                plt.plot(atlas_data[min_bin:max_bin],
+                     color='r')
+                plt.plot((atlas_data[min_bin:max_bin]+delta[min_bin:max_bin]),
+                     color='r', alpha=0.5)
+                plt.plot((atlas_data[min_bin:max_bin]-delta[min_bin:max_bin]),
+                     color='r', alpha=0.5)
+                plt.savefig("error_"+run_name+".pdf")
+                plt.figure()
+                plt.plot(prediction[0][min_bin:max_bin]/prediction[0][min_bin:max_bin])
+                plt.plot(atlas_data[min_bin:max_bin]/prediction[0][min_bin:max_bin],
+                     color='r')
+                plt.plot((atlas_data[min_bin:max_bin]+delta[min_bin:max_bin])/prediction[0][min_bin:max_bin],
+                     color='r', alpha=0.5)
+                plt.plot((atlas_data[min_bin:max_bin]-delta[min_bin:max_bin])/prediction[0][min_bin:max_bin],
+                     color='r', alpha=0.5)
+                plt.savefig("error_rat_"+run_name+".pdf")
+                print("First prediction found at p=0.05.")
+                print(prediction[0][min_bin:max_bin])
+                print("Atlas data.")
+                print(atlas_data[min_bin:max_bin])
+                print("Theoretical (+systematic) uncertainty.")
+                print(delta[min_bin:max_bin])
+                print("Value of first operator A factor at p=0.05.")
+                print(factor_operatorA)
+                print("... corresponding mass scale.")
+                print(operatorAfactor_to_lambda(factor_operatorA))
+                print("Value of first operator A factor at p=0.05.")
+                print(factor_operatorB)
+                print("... corresponding mass scale.")
+                print(operatorAfactor_to_lambda(factor_operatorB))
+                l+=1
+
             temp_points_x.append(factor_operatorA)
             temp_points_y.append(factor_operatorB)
             temp_deltachisqs_all.append(deltachisqs)

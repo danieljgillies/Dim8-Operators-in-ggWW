@@ -12,6 +12,12 @@ def kgtilde2lam(x):
 def lam2kgtilde(x):
     return np.sign(x)*(8*np.pi*0.24622**2)/((x**2)*0.113)
 
+def fac2lam(x):
+    return np.sign(x)*2*(abs(x)**-0.25)
+
+
+def lam2fac(x):
+    return np.sign(x)*(2**4)/(x**4)
 
 
 
