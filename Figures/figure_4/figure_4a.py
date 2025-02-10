@@ -22,9 +22,9 @@ nnllnnlonloew_min=2*3000*array_for_plot(np.load("../QCD_EW_Combination/mWW_14TeV
 nnllnnlonloew_max=2*3000*array_for_plot(np.load("../QCD_EW_Combination/mWW_14TeV_veto35_sm_qq_nnllnnlo_qcd_cross_nlo_ew_max.npy"))
 
 #nlo aa and aq pieces.
-nlophoton_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mWW_14TeV_veto35_sm_gammagamma_nlo_centre.npy"))
-nlophoton_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mWW_14TeV_veto35_sm_gammagamma_nlo_min.npy"))
-nlophoton_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mWW_14TeV_veto35_sm_gammagamma_nlo_max.npy"))
+nlophoton_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mWW_14TeV_veto35_sm_gamgam_nlo_centre.npy"))
+nlophoton_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mWW_14TeV_veto35_sm_gamgam_nlo_min.npy"))
+nlophoton_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mWW_14TeV_veto35_sm_gamgam_nlo_max.npy"))
 
 
 nnllnnlonloew_err=(nnllnnlonloew_max-nnllnnlonloew_min)/2
