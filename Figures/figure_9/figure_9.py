@@ -9,7 +9,6 @@ from plot_funcs import round_to_5, array_for_plot
 
 
 bins=round_to_5(np.logspace(np.log10(200), np.log10(4000), 17))
-print(bins)
 bin_widths=bins[1:17]-bins[0:16]
 bin_widths18=np.array([41.1817, 41.1817, 49.6614, 59.8871, 72.2183, 87.0887, 105.021, 126.6458, 152.7232, 184.1698, 222.093, 267.823, 322.97, 389.473, 469.668, 566.377, 682.999, 682.999])
 
@@ -208,22 +207,35 @@ ggnll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_H
 ggnll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
 ggnll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
 
-print(ggnll_050050050/(6000*bin_widths18))
+
 
 sm=2*3000*array_for_plot(np.load("../SM_Construction/mll_14TeV_veto35_sm_centre.npy"))
 sm_min=2*3000*array_for_plot(np.load("../SM_Construction/mll_14TeV_veto35_sm_min.npy"))
 sm_max=2*3000*array_for_plot(np.load("../SM_Construction/mll_14TeV_veto35_sm_max.npy"))
 
-print(sm/6000)
-print(sm_max/6000)
-print(sm_min/6000)
 
 err_sm=(sm_max-sm_min)/2
 
 
+#Can set a mass scale to rescale the amplitude.
+mass_scale=2#TeV
 
-mass_scale=2#
+#To find the error in the ratios we add the error in quadrature since we do not have the breakdown in $\mu_r$ and $\mu_f$.
 
+
+# To calculate the error in the "perfect interference" case for SM and Operators we calculate for all $\mu_r$ and $\mu_f$ \
+# and take the maximum and minimum as the errors.
+
+
+
+#------------------------------------------------------------------------------------
+
+
+#Operator 1
+
+
+
+#Maximum possible value for k1nll given by perfect interference between SM gg and the O1 amplitude
 
 k1gg_nll_050050050=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050050*k12nll_050050050)
 k1gg_nll_050050025=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050025*k12nll_050050025)
@@ -251,19 +263,17 @@ k1gg_nll_max=np.array(k1gg_nll_max)
 
 plt.figure(figsize=(16, 12),dpi=100)
 fig, axs = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
-#axs[0].set_title(r"Operator 1 Comparison to \mathrm{SM} ATLAS 14TeV",\
-#               fontsize=18,color="black")
-#axs[1].set_xlabel(r"$M_{e\mu}$ $\left[\mathrm{GeV}\right]$ ",\
-#               fontsize=16,color="black")
+
+
+
 axs[0].set_ylabel(r"$\frac{d\sigma}{dM_{e\mu}}$ $\left[\frac{\mathrm{fb}}{\mathrm{GeV}}\right]$ ",\
                fontsize=20,color="black")
 axs[1].set_ylabel(r"Ratio to SM",\
                fontsize=16,color="black")
-#axs[0].xaxis.set_visible(False)
 axs[0].loglog()
+#Annotate the mass scale chosen for the plot.
 axs[0].annotate(r'$\Lambda=$'+str(mass_scale)+r'TeV', (1800, 0.05),\
                fontsize=18,color="grey")
-
 axs[0].annotate(r'Resummed $p_{T, veto} = 35$GeV', (660, 2*10**-12),\
                fontsize=15,color="grey")
 
@@ -342,14 +352,26 @@ axs[1].step(bin_centres, (2000**8)/((mass_scale*1000)**8)*abs(ratio_k12_nll), co
 
 axs[1].fill_between(bin_centres, (2000**8)/((mass_scale*1000)**8)*(ratio_k12_nll-err_k12_nll), (2000**8)/((mass_scale*1000)**8)*(ratio_k12_nll+err_k12_nll),
                      color='b', alpha=0.3, step='mid')
-#axs[1].set_ylim(2*10**-4, 2)
+
 axs[0].set_xticks([200, 1000, 4000])
 axs[0].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].set_xticks([200, 1000, 4000])
 axs[1].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].yaxis.set_major_locator(ticker.LogLocator(base=10.0, numticks=4))
-#plt.tight_layout()
+
 plt.savefig("figure_9a.pdf", bbox_inches='tight')
+
+
+
+#------------------------------------------------------------------------------------
+
+
+#Operator 2
+
+
+
+#Maximum possible value for k2nll given by perfect interference between SM gg and the O2 amplitude
+
 
 k2gg_nll_050050050=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050050*k22nll_050050050)
 k2gg_nll_050050025=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050025*k22nll_050050025)
@@ -377,19 +399,18 @@ k2gg_nll_max=np.array(k2gg_nll_max)
 
 plt.figure(figsize=(16, 12),dpi=100)
 fig, axs = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
-#axs[0].set_title(r"Operator 2 Comparison to \mathrm{SM} ATLAS 14TeV",\
-#               fontsize=18,color="black")
-#axs[1].set_xlabel(r"$M_{e\mu}$ $\left[\mathrm{GeV}\right]$ ",\
-#               fontsize=16,color="black")
+
+
+
+
 axs[0].set_ylabel(r"$\frac{d\sigma}{dM_{e\mu}}$ $\left[\frac{\mathrm{fb}}{\mathrm{GeV}}\right]$ ",\
                fontsize=20,color="black")
 axs[1].set_ylabel(r"Ratio to SM",\
                fontsize=16,color="black")
-#axs[0].xaxis.set_visible(False)
 axs[0].loglog()
+#Annotate the mass scale chosen for the plot.
 axs[0].annotate(r'$\Lambda=$'+str(mass_scale)+r'TeV', (1800, 0.05),\
                fontsize=18,color="grey")
-
 axs[0].annotate(r'Resummed $p_{T, veto} = 35$GeV', (660, 2*10**-12),\
                fontsize=15,color="grey")
 
@@ -469,14 +490,24 @@ axs[1].step(bin_centres, (2000**8)/((mass_scale*1000)**8)*abs(ratio_k22_nll), co
 
 axs[1].fill_between(bin_centres, (2000**8)/((mass_scale*1000)**8)*(ratio_k22_nll-err_k22_nll), (2000**8)/((mass_scale*1000)**8)*(ratio_k22_nll+err_k22_nll),
                      color='b', alpha=0.3, step='mid')
-#axs[1].set_ylim(2*10**-4, 2)
+
 axs[0].set_xticks([200, 1000, 4000])
 axs[0].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].set_xticks([200, 1000, 4000])
 axs[1].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].yaxis.set_major_locator(ticker.LogLocator(base=10.0, numticks=4))
-#plt.tight_layout()
+
 plt.savefig("figure_9b.pdf", bbox_inches='tight')
+
+
+#------------------------------------------------------------------------------------
+
+
+#Operator 3
+
+
+#Maximum possible value for k3nll given by perfect interference between SM gg and the O3 amplitude
+
 
 k3gg_nll_050050050=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050050*k32nll_050050050)
 k3gg_nll_050050025=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050025*k32nll_050050025)
@@ -504,19 +535,18 @@ k3gg_nll_max=np.array(k3gg_nll_max)
 
 plt.figure(figsize=(16, 12),dpi=100)
 fig, axs = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
-#axs[0].set_title(r"Operator 3 Comparison to \mathrm{SM} ATLAS 14TeV",\
-#               fontsize=18,color="black")
-#axs[1].set_xlabel(r"$M_{e\mu}$ $\left[\mathrm{GeV}\right]$ ",\
-#               fontsize=16,color="black")
+
+
+
+
 axs[0].set_ylabel(r"$\frac{d\sigma}{dM_{e\mu}}$ $\left[\frac{\mathrm{fb}}{\mathrm{GeV}}\right]$ ",\
                fontsize=20,color="black")
 axs[1].set_ylabel(r"Ratio to SM",\
                fontsize=16,color="black")
-#axs[0].xaxis.set_visible(False)
 axs[0].loglog()
+#Annotate the mass scale chosen for the plot.
 axs[0].annotate(r'$\Lambda=$'+str(mass_scale)+r'TeV', (1800, 0.05),\
                fontsize=18,color="grey")
-
 axs[0].annotate(r'Resummed $p_{T, veto} = 35$GeV', (660, 2*10**-12),\
                fontsize=15,color="grey")
 bin_centres=(bins[0:16] + bins[1:17])/2
@@ -595,14 +625,23 @@ axs[1].step(bin_centres, (2000**8)/((mass_scale*1000)**8)*abs(ratio_k32_nll), co
 
 axs[1].fill_between(bin_centres, (2000**8)/((mass_scale*1000)**8)*(ratio_k32_nll-err_k32_nll), (2000**8)/((mass_scale*1000)**8)*(ratio_k32_nll+err_k32_nll),
                      color='b', alpha=0.3, step='mid')
-#axs[1].set_ylim(2*10**-4, 2)
+
 axs[0].set_xticks([200, 1000, 4000])
 axs[0].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].set_xticks([200, 1000, 4000])
 axs[1].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].yaxis.set_major_locator(ticker.LogLocator(base=10.0, numticks=4))
-#plt.tight_layout()
+
 plt.savefig("figure_9c.pdf", bbox_inches='tight')
+
+#------------------------------------------------------------------------------------
+
+
+#Operator 4
+
+
+#Maximum possible value for k4nll given by perfect interference between SM gg and the O4 amplitude
+
 
 k4gg_nll_050050050=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050050*k42nll_050050050)
 k4gg_nll_050050025=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050025*k42nll_050050025)
@@ -630,19 +669,18 @@ k4gg_nll_max=np.array(k4gg_nll_max)
 
 plt.figure(figsize=(16, 12),dpi=100)
 fig, axs = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
-#axs[0].set_title(r"Operator 4 Comparison to \mathrm{SM} ATLAS 14TeV",\
-#               fontsize=18,color="black")
-#axs[1].set_xlabel(r"$M_{e\mu}$ $\left[\mathrm{GeV}\right]$ ",\
-#               fontsize=16,color="black")
+
+
+
+
 axs[0].set_ylabel(r"$\frac{d\sigma}{dM_{e\mu}}$ $\left[\frac{\mathrm{fb}}{\mathrm{GeV}}\right]$ ",\
                fontsize=20,color="black")
 axs[1].set_ylabel(r"Ratio to SM",\
                fontsize=16,color="black")
-#axs[0].xaxis.set_visible(False)
 axs[0].loglog()
+#Annotate the mass scale chosen for the plot.
 axs[0].annotate(r'$\Lambda=$'+str(mass_scale)+r'TeV', (1800, 0.05),\
                fontsize=18,color="grey")
-
 axs[0].annotate(r'Resummed $p_{T, veto} = 35$GeV', (660, 2*10**-12),\
                fontsize=15,color="grey")
 bin_centres=(bins[0:16] + bins[1:17])/2
@@ -682,8 +720,6 @@ axs[0].set_ylim(0.9*10**-12, 1)
 axs[0].tick_params(which="both", labelsize=13, direction='in', right=True, top=True, bottom=False)
 axs[1].tick_params(which="both", labelsize=13, direction='in', right=True)
 
-#axs[0].tick_params(which="both", labelsize=13, direction='in', right=True, top=True, bottom=False)
-#axs[1].tick_params(which="both", labelsize=13, direction='in', right=True, pad=10)
 
 ratio_gg_nll=ggnll_centre/sm
 
@@ -723,16 +759,25 @@ axs[1].step(bin_centres, (2000**8)/((mass_scale*1000)**8)*abs(ratio_k42_nll), co
 
 axs[1].fill_between(bin_centres, (2000**8)/((mass_scale*1000)**8)*(ratio_k42_nll-err_k42_nll), (2000**8)/((mass_scale*1000)**8)*(ratio_k42_nll+err_k42_nll),
                      color='b', alpha=0.3, step='mid')
-#axs[1].set_ylim(2*10**-4, 2)
+
 axs[0].set_xticks([200, 1000, 4000])
 axs[0].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].set_xticks([200, 1000, 4000])
 axs[1].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].yaxis.set_major_locator(ticker.LogLocator(base=10.0, numticks=4))
-#axs[1].yaxis.set_minor_locator(ticker.LogLocator(base=10.0, subs=[2, 3, 4, 5, 6, 7, 8, 9], numticks=10))
+
 axs[1].minorticks_on()
-#plt.tight_layout()
+
 plt.savefig("figure_9d.pdf", bbox_inches='tight')
+
+#------------------------------------------------------------------------------------
+
+
+#Operator 5
+
+
+
+#Maximum possible value for k5nll given by perfect interference between SM gg and the O5 amplitude
 
 k5gg_nll_050050050=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050050*k52nll_050050050)
 k5gg_nll_050050025=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050025*k52nll_050050025)
@@ -760,19 +805,18 @@ k5gg_nll_max=np.array(k5gg_nll_max)
 
 plt.figure(figsize=(16, 12.81),dpi=100)
 fig, axs = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
-#axs[0].set_title(r"Operator 5 Comparison to \mathrm{SM} ATLAS 14TeV",\
-#               fontsize=18,color="black")
+
+
 axs[1].set_xlabel(r"$M_{e\mu}$ $\left[\mathrm{GeV}\right]$ ",\
                fontsize=16,color="black")
 axs[0].set_ylabel(r"$\frac{d\sigma}{dM_{e\mu}}$ $\left[\frac{\mathrm{fb}}{\mathrm{GeV}}\right]$ ",\
                fontsize=20,color="black")
 axs[1].set_ylabel(r"Ratio to SM",\
                fontsize=16,color="black")
-#axs[0].xaxis.set_visible(False)
 axs[0].loglog()
+#Annotate the mass scale chosen for the plot.
 axs[0].annotate(r'$\Lambda=$'+str(mass_scale)+r'TeV', (1800, 0.05),\
                fontsize=18,color="grey")
-
 axs[0].annotate(r'Resummed $p_{T, veto} = 35$GeV', (660, 2*10**-12),\
                fontsize=15,color="grey")
 bin_centres=(bins[0:16] + bins[1:17])/2
@@ -851,14 +895,23 @@ axs[1].step(bin_centres, (2000**8)/((mass_scale*1000)**8)*abs(ratio_k52_nll), co
 
 axs[1].fill_between(bin_centres, (2000**8)/((mass_scale*1000)**8)*(ratio_k52_nll-err_k52_nll), (2000**8)/((mass_scale*1000)**8)*(ratio_k52_nll+err_k52_nll),
                      color='b', alpha=0.3, step='mid')
-#axs[1].set_ylim(2*10**-4, 2)
+
 axs[0].set_xticks([200, 1000, 4000])
 axs[0].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].set_xticks([200, 1000, 4000])
 axs[1].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].yaxis.set_major_locator(ticker.LogLocator(base=10.0, numticks=4))
-#plt.tight_layout()
+
 plt.savefig("figure_9e.pdf", bbox_inches='tight')
+
+#------------------------------------------------------------------------------------
+
+
+#Operator 6
+
+
+
+#Maximum possible value for k6nll given by perfect interference between SM gg and the O6 amplitude
 
 k6gg_nll_050050050=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050050*k62nll_050050050)
 k6gg_nll_050050025=(2000**4)/((mass_scale*1000)**4)*np.sqrt(ggnll_050050025*k62nll_050050025)
@@ -886,21 +939,21 @@ k6gg_nll_max=np.array(k6gg_nll_max)
 
 plt.figure(figsize=(16, 12.81),dpi=100)
 fig, axs = plt.subplots(2, 1, gridspec_kw={'height_ratios': [3, 1]}, sharex=True)
-#axs[0].set_title(r"Operator 6 Comparison to \mathrm{SM} ATLAS 14TeV",\
-#               fontsize=18,color="black")
+
+
 axs[1].set_xlabel(r"$M_{e\mu}$ $\left[\mathrm{GeV}\right]$ ",\
                fontsize=16,color="black")
 axs[0].set_ylabel(r"$\frac{d\sigma}{dM_{e\mu}}$ $\left[\frac{\mathrm{fb}}{\mathrm{GeV}}\right]$ ",\
                fontsize=20,color="black")
 axs[1].set_ylabel(r"Ratio to SM",\
                fontsize=16,color="black")
-#axs[0].xaxis.set_visible(False)
 axs[0].loglog()
+#Annotate the mass scale chosen for the plot.
 axs[0].annotate(r'$\Lambda=$'+str(mass_scale)+r'TeV', (1800, 0.05),\
                fontsize=18,color="grey")
-
 axs[0].annotate(r'Resummed $p_{T, veto} = 35$GeV', (660, 2*10**-12),\
                fontsize=15,color="grey")
+
 bin_centres=(bins[0:16] + bins[1:17])/2
 
 bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
@@ -977,12 +1030,12 @@ axs[1].step(bin_centres, (2000**8)/((mass_scale*1000)**8)*abs(ratio_k62_nll), co
 
 axs[1].fill_between(bin_centres, (2000**8)/((mass_scale*1000)**8)*(ratio_k62_nll-err_k62_nll), (2000**8)/((mass_scale*1000)**8)*(ratio_k62_nll+err_k62_nll),
                      color='b', alpha=0.3, step='mid')
-#axs[1].set_ylim(2*10**-4, 2)
+
 axs[0].set_xticks([200, 1000, 4000])
 axs[0].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].set_xticks([200, 1000, 4000])
 axs[1].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[1].yaxis.set_major_locator(ticker.LogLocator(base=10.0, numticks=4))
-#plt.tight_layout()
+
 plt.savefig("figure_9f.pdf", bbox_inches='tight')
 
