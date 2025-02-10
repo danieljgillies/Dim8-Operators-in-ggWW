@@ -21,54 +21,54 @@ nnllnnlonloew_max=36.1*2*np.load("../QCD_EW_Combination/mll_13TeV_veto35_sm_qq_n
 err_qq=(nnllnnlonloew_max-nnllnnlonloew_min)/2
 
 
-atlas=36.1*2*np.load("../Data/13TeV_ATLAS/mll_atlas.npy")
-atlas_err= 36.1*2*np.load("../Data/13TeV_ATLAS/mll_atlas_err.npy")
+atlas=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_atlas.npy")
+atlas_err= 36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_atlas_err.npy")
 
 
-mcfm_nll_gg=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_centre.npy")
-mcfm_nll_gg_min=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_min.npy")
-mcfm_nll_gg_max=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_max.npy")
-ggnll_050050050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-ggnll_050050025=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy")
-ggnll_050050100=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy")
-ggnll_025025050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
-ggnll_025050050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-ggnll_050025050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
-ggnll_050100050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
-ggnll_100050050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-ggnll_100100050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
+mcfm_nll_gg=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_centre.npy")
+mcfm_nll_gg_min=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_min.npy")
+mcfm_nll_gg_max=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_max.npy")
+ggnll_050050050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+ggnll_050050025=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy")
+ggnll_050050100=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy")
+ggnll_025025050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
+ggnll_025050050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+ggnll_050025050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
+ggnll_050100050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
+ggnll_100050050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+ggnll_100100050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
 
-mcfm_nll_kg=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_centre.npy")
-mcfm_nll_kg_min=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_min.npy")
-mcfm_nll_kg_max=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_max.npy")
-kgnll_050050050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-kgnll_050050025=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy")
-kgnll_050050100=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy")
-kgnll_025025050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
-kgnll_025050050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-kgnll_050025050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
-kgnll_050100050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
-kgnll_100050050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-kgnll_100100050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
-
-
-mcfm_nll_kg2=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_centre.npy")
-mcfm_nll_kg2_min=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_min.npy")
-mcfm_nll_kg2_max=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_max.npy")
-kg2nll_050050050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-kg2nll_050050025=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy")
-kg2nll_050050100=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy")
-kg2nll_025025050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
-kg2nll_025050050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-kg2nll_050025050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
-kg2nll_050100050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
-kg2nll_100050050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-kg2nll_100100050=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
+mcfm_nll_kg=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_centre.npy")
+mcfm_nll_kg_min=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_min.npy")
+mcfm_nll_kg_max=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_max.npy")
+kgnll_050050050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+kgnll_050050025=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy")
+kgnll_050050100=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy")
+kgnll_025025050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
+kgnll_025050050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+kgnll_050025050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
+kgnll_050100050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
+kgnll_100050050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+kgnll_100100050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHSMint_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
 
 
-nlophoton_1=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=0.5MWW.npy")
-nlophoton_05=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=0.25MWW.npy")
-nlophoton_2=36.1*2*np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=1.0MWW.npy")
+mcfm_nll_kg2=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_centre.npy")
+mcfm_nll_kg2_min=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_min.npy")
+mcfm_nll_kg2_max=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_max.npy")
+kg2nll_050050050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+kg2nll_050050025=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy")
+kg2nll_050050100=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy")
+kg2nll_025025050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
+kg2nll_025050050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+kg2nll_050025050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
+kg2nll_050100050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
+kg2nll_100050050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+kg2nll_100100050=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
+
+
+nlophoton_1=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=0.5MWW.npy")
+nlophoton_05=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=0.25MWW.npy")
+nlophoton_2=36.1*2*np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=1.0MWW.npy")
 
 
 
@@ -142,12 +142,12 @@ def kgtilde_to_max_bin(factor_vals):
     return which_bin
 
 
-kg_vals=np.linspace(-10, 10, 600)
-kgtilde_vals=np.linspace(-10, 10, 600)
+kg_vals=np.linspace(-10, 10, 2000)
+kgtilde_vals=np.linspace(-10, 10, 2000)
 
 
 
-points_x, points_y, deltachisqs_all=produce_contours_ATLAS(kg_vals, kgtilde_vals, atlas, atlas_err, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg_to_max_bin, kgtilde_to_max_bin, min_bin=3)
+points_x, points_y, deltachisqs_all=produce_contours_ATLAS("atlas_kg", kg_vals, kgtilde_vals, atlas, atlas_err, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg2lam, kgtilde2lam, kg_to_max_bin, kgtilde_to_max_bin, min_bin=3)
 
 np.save("points_x_kg", np.array(points_x))
 np.save("points_y_kg", np.array(points_y))

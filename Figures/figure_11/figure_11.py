@@ -87,10 +87,9 @@ for i, collection in enumerate(CS.collections):
         for path in paths:
             vertices = path.vertices  # Extract the vertices of the path
             plt.plot(xs2, ys2)
-
             #Have to manually vary these ranges to select the correct points.
-            xs2=np.concatenate((vertices[130:440,0], vertices[740:990,0], vertices[1280:1590,0], vertices[1860:2140,0]))
-            ys2=np.concatenate((vertices[130:440,1], vertices[740:990,1], vertices[1280:1590,1], vertices[1860:2140,1]))
+            xs2=np.concatenate((vertices[0:440,0], vertices[1400:2400,0], vertices[3500:4250,0], vertices[5200:6200,0], vertices[7140:,0]))
+            ys2=np.concatenate((vertices[0:440,1], vertices[1400:2400,1], vertices[3500:4250,1], vertices[5200:6200,1], vertices[7140:,1]))
             
             
             plt.plot(xs2, ys2, "r")
