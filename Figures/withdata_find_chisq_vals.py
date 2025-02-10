@@ -213,7 +213,7 @@ def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_val
                 print("Value of first operator A factor at p=0.05.")
                 print(factor_operatorB)
                 print("... corresponding mass scale.")
-                print(operatorAfactor_to_lambda(factor_operatorB))
+                print(operatorBfactor_to_lambda(factor_operatorB))
                 l+=1
 
             temp_points_x.append(factor_operatorA)
