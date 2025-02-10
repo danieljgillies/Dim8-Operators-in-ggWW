@@ -7,24 +7,18 @@ sys.path.insert(1, '..')
 from plot_funcs import round_to_5, array_for_plot
 
 
+#Creating the bins used for plotting.
 bins=round_to_5(np.logspace(np.log10(200), np.log10(4000), 17))
-#print(bins)
-bin_widths=bins[1:17]-bins[0:16]
-bin_widths18=np.array([41.1817, 41.1817, 49.6614, 59.8871, 72.2183, 87.0887, 105.021, 126.6458, 152.7232, 184.1698, 222.093, 267.823, 322.97, 389.473, 469.668, 566.377, 682.999, 682.999])
-
 bin_centres=(bins[0:16] + bins[1:17])/2
 bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
 
 
 
-
+#Loading in the relevant data. (Multiply by two as we have mu+ e- and mu- e+)
 sm=2*np.load("../SM_Construction/mll_14TeV_veto35_sm_centre.npy")
 sm_min=2*np.load("../SM_Construction/mll_14TeV_veto35_sm_min.npy")
 sm_max=2*np.load("../SM_Construction/mll_14TeV_veto35_sm_max.npy")
 
-#print(sm)
-#print(sm_min)
-#print(sm_max)
 
 nnllnnlonloew_centre=2*np.load("../QCD_EW_Combination/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_cross_nlo_ew_centre.npy")
 nnllnnlonloew_min=2*np.load("../QCD_EW_Combination/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_cross_nlo_ew_min.npy")

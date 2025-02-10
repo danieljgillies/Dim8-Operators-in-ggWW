@@ -17,8 +17,6 @@ nnllnnlo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_H
 nnllnnlo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_min.npy"))
 nnllnnlo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_max.npy"))
 
-print(nnllnnlo_centre/6000)
-
 nnlo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnlo_qcd_centre.npy"))
 nnlo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnlo_qcd_min.npy"))
 nnlo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnlo_qcd_max.npy"))
@@ -31,22 +29,17 @@ nnll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_ve
 
 
 
-#from matplotlib.ticker import LogLocator
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 plt.figure(figsize=(16, 24),dpi=1000)
 
 fig, axs = plt.subplots(2, 1, gridspec_kw={'height_ratios': [2, 1]}, sharex=True)
-#axs[0].set_title(r"MATRIX vs ATLAS",\
-#               fontsize=18,color="black")
 axs[1].set_xlabel(r"$M_{e\mu}$ [GeV] ",\
                fontsize=16,color="black")
-#axs[0].set_ylabel(r"num_events",\
-#               fontsize=16,color="black")
 axs[0].set_ylabel(r"$\frac{d\sigma}{dM_{e\mu}}$ $\left[\frac{\mathrm{fb}}{\mathrm{GeV}}\right]$ ",\
                fontsize=20,color="black")
 axs[1].set_ylabel(r" Ratio$_{\mathrm{NNLO}}$ - 1",\
                fontsize=16,color="black")
-#axs[0].xaxis.set_visible(False)
+
 
 
 axs[0].loglog()
@@ -106,6 +99,7 @@ axs[0].set_ylim(10**-8, 2*10**4)
 axs[0].tick_params(which="both", labelsize=13, direction='in', right=True, top=True, bottom=False)
 axs[1].tick_params(which="both", labelsize=13, direction='in', right=True)
 
+#Taking ratios relative to the fixed order calculation.
 
 ratio_nnllnnlo=nnllnnlo_centre/nnlo_centre
 ratio_nnllnnlo_min=nnllnnlo_min/nnlo_centre
@@ -137,6 +131,5 @@ axs[1].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 axs[0].set_xticks([200, 1000, 4000])
 axs[0].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 
-#plt.tight_layout()
 plt.savefig("figure_3b.pdf", bbox_inches='tight')
 
