@@ -97,6 +97,8 @@ def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_val
     deltachisqs_all (np.array dim(n, m)): The value of delta chi squared at the point in x and y.
 
     """
+    #For reproducibility
+    np.random.seed(1)
     
 
     #Find the maximum bin that can be used to constrain each of the factors given.
