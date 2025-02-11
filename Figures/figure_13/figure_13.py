@@ -93,8 +93,8 @@ for i, collection in enumerate(CS.collections):
             #Have to manually vary these ranges to select the correct points.
             #xs2=np.concatenate((vertices[4200:4600,0], vertices[2350:3170,0], vertices[4000:4700,0], vertices[5600:6450,0]))
             #ys2=np.concatenate((vertices[4200:4600,1], vertices[2350:3170,1], vertices[4000:4700,1], vertices[5600:6450,1]))
-            xs2=np.concatenate((vertices[750:1200,0], vertices[1820:2750,0], vertices[3450:4250,0], vertices[4820:5800,0], vertices[6500:6850,0]))
-            ys2=np.concatenate((vertices[750:1200,1], vertices[1820:2750,1], vertices[3450:4250,1], vertices[4820:5800,1], vertices[6500:6850,1]))
+            xs2=np.concatenate((vertices[800:1200,0], vertices[1820:2750,0], vertices[3500:4250,0], vertices[4900:5950,0], vertices[6500:6940,0]))
+            ys2=np.concatenate((vertices[800:1200,1], vertices[1820:2750,1], vertices[3500:4250,1], vertices[4900:5950,1], vertices[6500:6940,1]))
             
             
             plt.plot(xs2, ys2, "r")

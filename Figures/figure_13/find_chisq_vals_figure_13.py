@@ -169,7 +169,7 @@ systematic_error=sm*((4.863706128 + bin_centres*0.019542609)/100)
 
 
 
-points_x, points_y, deltachisqs_all=produce_contours_ATLAS(kg_vals, kgtilde_vals, sm, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg_to_max_bin, kgtilde_to_max_bin, systematic_error=systematic_error)
+points_x, points_y, deltachisqs_all=produce_contours_ATLAS("syst", kg_vals, kgtilde_vals, sm, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg2lam, kgtilde2lam, kg_to_max_bin, kgtilde_to_max_bin, systematic_error=systematic_error)
 
 np.save("points_x_kg_syst", np.array(points_x))
 np.save("points_y_kg_syst", np.array(points_y))
@@ -180,7 +180,7 @@ np.save("deltachisqs_all_syst", np.array(deltachisqs_all))
 kg_vals=np.linspace(-1.5, 1.5, 2000)
 kgtilde_vals=np.linspace(-1.5, 1.5, 2000)
 
-points_x, points_y, deltachisqs_all=produce_contours_ATLAS(kg_vals, kgtilde_vals, sm, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg_to_max_bin, kgtilde_to_max_bin)
+points_x, points_y, deltachisqs_all=produce_contours_ATLAS("nosyst", kg_vals, kgtilde_vals, sm, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg2lam, kgtilde2lam, kg_to_max_bin, kgtilde_to_max_bin)
 
 
 np.save("points_x_kg_nosyst", np.array(points_x))
