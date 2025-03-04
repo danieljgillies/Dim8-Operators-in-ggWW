@@ -92,26 +92,11 @@ bin_centres=(bins[0:len(bins)-1] + bins[1:])/2
 
 bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
 
-axs[0].step(bin_centres, sm/(bin_widths18*3000), color='k', where='mid', linewidth=0.7)
-axs[0].step(bin_centres, -sm/(bin_widths18*3000), color='k', where='mid', label=r'$qq$+$gg$+$\gamma\gamma$')
-
-axs[0].fill_between(bin_centres, sm_min/(bin_widths18*3000), sm_max/(bin_widths18*3000),
-                     color='k', alpha=0.3, step='mid')
-
 axs[0].step(bin_centres, nnllnnlonloew_centre/(bin_widths18*3000), color='k', linestyle="--", where='mid', linewidth=0.7)
 axs[0].step(bin_centres, -nnllnnlonloew_centre/(bin_widths18*3000), color='k', linestyle="--", where='mid', label=r'$qq$-only (NNLO+NNLL$_{\mathrm{QCD}}\times$NLO$_{\mathrm{EW}}$) ')
 
 axs[0].fill_between(bin_centres, nnllnnlonloew_min/(bin_widths18*3000), nnllnnlonloew_max/(bin_widths18*3000),
                      color='k', alpha=0.3, step='mid')
-
-
-axs[0].step(bin_centres, nlophoton_centre/(bin_widths18*3000), color='y', where='mid', linewidth=0.7)
-axs[0].step(bin_centres, -nlophoton_centre/(bin_widths18*3000), color='y', where='mid', label=r'$\gamma\gamma $-only (NLO)')
-
-
-axs[0].fill_between(bin_centres, nlophoton_min/(bin_widths18*3000), nlophoton_max/(bin_widths18*3000),
-                     color='y', alpha=0.3, step='mid')
-
 
 
 axs[0].step(bin_centres, ggnll_centre/(bin_widths18*3000), color='r', where='mid', linewidth=0.7)
@@ -151,12 +136,6 @@ err_photon=(nlophoton_max-nlophoton_min)/2
 err=(nlophoton_centre/sm)*((err_photon/nlophoton_centre)**2 + (err_sm/sm)**2)**0.5
 
 
-axs[1].step(bin_centres, 100*(nlophoton_centre/sm), color='y', where='mid', linewidth=0.7)
-axs[1].fill_between(bin_centres, 100*((nlophoton_centre/sm)-err), 100*((nlophoton_centre/sm)+err),
-                     color='y', alpha=0.5, step='mid')
-
-
-
 err_nnllnnlonloew=(nnllnnlonloew_max-nnllnnlonloew_min)/2
 
 err=(nnllnnlonloew_centre/sm)*((err_nnllnnlonloew/nnllnnlonloew_centre)**2 + (err_sm/sm)**2)**0.5
@@ -170,7 +149,7 @@ axs[1].fill_between(bin_centres, 100*((nnllnnlonloew_centre/sm)-err), 100*((nnll
 
 axs[1].loglog()
 
-axs[1].set_ylim(10**-2, 200)
+axs[1].set_ylim(10**-2, 150)
 axs[0].set_xticks([200, 1000, 4000])
 axs[0].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 
@@ -180,5 +159,5 @@ axs[1].set_yticks([10**-2, 10**-1, 1, 10, 100])
 axs[1].set_yticklabels(["0.01", "0.1", "1", "10", "100"])
 axs[1].set_xticks([200, 1000, 4000])
 axs[1].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
-plt.savefig("figure_5a.pdf", bbox_inches='tight')
+plt.savefig("figure_5a_nophoton.pdf", bbox_inches='tight')
 

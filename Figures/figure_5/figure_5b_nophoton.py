@@ -167,24 +167,12 @@ bin_centres=(bins[0:len(bins)-1] + bins[1:])/2
 
 bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
 
-axs[0].step(bin_centres, sm/(bin_widths18*3000), color='k', where='mid', linewidth=0.7)
-axs[0].step(bin_centres, -sm/(bin_widths18*3000), color='k', where='mid', label=r'$qq$+$gg$+$\gamma\gamma$')
-
-axs[0].fill_between(bin_centres, sm_min/(bin_widths18*3000), sm_max/(bin_widths18*3000),
-                     color='k', alpha=0.3, step='mid')
-
 
 axs[0].step(bin_centres, nnlonloew_noveto_centre/(bin_widths18*3000), color='k', linestyle="--", where='mid', linewidth=0.7)
 axs[0].step(bin_centres, -nnlonloew_noveto_centre/(bin_widths18*3000), color='k', linestyle="--", where='mid', label=r'$qq$-only (NNLO$_{\mathrm{QCD}}\times$NLO$_{\mathrm{EW}}$) ')
 
 axs[0].fill_between(bin_centres, nnlonloew_noveto_min/(bin_widths18*3000), nnlonloew_noveto_max/(bin_widths18*3000),
                      color='k', alpha=0.3, step='mid')
-
-axs[0].step(bin_centres, nlophoton_noveto_centre/(bin_widths18*3000), color='y', where='mid', linewidth=0.7)
-axs[0].step(bin_centres, -nlophoton_noveto_centre/(bin_widths18*3000), color='y', where='mid', label=r'$\gamma\gamma $-only (NLO)')
-
-axs[0].fill_between(bin_centres, nlophoton_noveto_min/(bin_widths18*3000), nlophoton_noveto_max/(bin_widths18*3000),
-                     color='y', alpha=0.3, step='mid')
 
 
 axs[0].step(bin_centres, gglo_centre/(bin_widths18*3000), color='b', where='mid', linewidth=0.7)
@@ -211,15 +199,6 @@ axs[1].fill_between(bin_centres, 100*ggratsm_min, 100*ggratsm_max,
 
 
 
-
-
-axs[1].step(bin_centres, 100*photonratsm, color='y', where='mid', linewidth=0.7)
-axs[1].fill_between(bin_centres, 100*photonratsm_min, 100*photonratsm_max,
-                     color='y', alpha=0.5, step='mid')
-
-
-
-
 axs[1].step(bin_centres, 100*qqratsm, color='k', where='mid', linewidth=0.7)
 axs[1].fill_between(bin_centres, 100*qqratsm_min, 100*qqratsm_max,
                      color='k', alpha=0.5, step='mid')
@@ -236,4 +215,4 @@ axs[1].set_yticklabels(["0.01", "0.1", "1", "10", "100"])
 axs[1].set_xticks([200, 1000, 4000])
 axs[1].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 
-plt.savefig("figure_5b.pdf", bbox_inches='tight')
+plt.savefig("figure_5b_nophoton.pdf", bbox_inches='tight')
