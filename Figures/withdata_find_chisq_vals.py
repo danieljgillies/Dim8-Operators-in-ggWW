@@ -41,7 +41,7 @@ def _chisq(expected, observed, _delta, min_bin, max_bin):
         raise("Error unexpected number of bins")
 
 
-def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_vals, atlas_data, atlas_err, generate_bsm_prediction, operatorAlambda_to_factor, operatorBlambda_to_factor, operatorAfactor_to_lambda, operatorBfactor_to_lambda, operatorAfactor_to_max_bin, operatorBfactor_to_max_bin, min_bin=0):#, SM_pred, Delta (Only needed for pseudodata case)
+def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_vals, atlas_data, atlas_err, generate_bsm_prediction, operatorAlambda_to_factor, operatorBlambda_to_factor, operatorAfactor_to_lambda, operatorBfactor_to_lambda, operatorAfactor_to_max_bin, operatorBfactor_to_max_bin, max_mass_scales, min_bin=0):#, SM_pred, Delta (Only needed for pseudodata case)
     """
 
     This function takes in experimental data, along with SM and BSM predictions which must be given using\
@@ -103,8 +103,8 @@ def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_val
 
     #Find the maximum bin that can be used to constrain each of the factors given.
 
-    max_bin_operatorA=operatorAfactor_to_max_bin(factor_operatorA_vals)
-    max_bin_operatorB=operatorBfactor_to_max_bin(factor_operatorB_vals)
+    max_bin_operatorA=operatorAfactor_to_max_bin(factor_operatorA_vals, max_mass_scales)
+    max_bin_operatorB=operatorBfactor_to_max_bin(factor_operatorB_vals, max_mass_scales)
 
     #We define a function to minimise the chisquared value based on two input coefficients a1[0], a1[1]
     def _chisq_tominimize(a1, s, max_bin):
@@ -116,7 +116,6 @@ def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_val
     #For each bin range the minimum chi squared for that number of bins must be evaluated.
 
     current_chisqs=[]
-    max_mass_scales=np.array([0.12458383, 0.19735961, 0.29153842, 0.34352475, 0.40114594, 0.45812857, 0.50765992, 0.57883101, 0.68620833, 0.82708867, 1.030653, 1.34274721, 1.99743379])
     for i in range(0,14):
         if i < min_bin+2:
             #We ignore the first three bins and we need at least two bins to minimise chisq so we start from max_bin=min_bin+2 (As [n:n+2] only returns n and n+1)
