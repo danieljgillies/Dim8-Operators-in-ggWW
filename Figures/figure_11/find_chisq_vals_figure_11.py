@@ -142,6 +142,9 @@ def kgtilde_to_max_bin(factor_vals, max_mass_scales):
 kg_vals=np.linspace(-10, 10, 2000)
 kgtilde_vals=np.linspace(-7, 7, 2000)
 
+#This vector gives minimum value of Lambda for each of the bins. E.g bin 185-220GeV can only \
+# be used if Lambda is bigger than 1150GeV.
+
 max_mass_scales=np.load("../min_Lambda_for_each_bin/lambda_min_empirical_13TeV_veto35.npy")
 print(max_mass_scales)
 points_x, points_y, deltachisqs_all=produce_contours_ATLAS("atlas_kg_05", kg_vals, kgtilde_vals, atlas, atlas_err, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg2lam, kgtilde2lam, kg_to_max_bin, kgtilde_to_max_bin, max_mass_scales, min_bin=3)
