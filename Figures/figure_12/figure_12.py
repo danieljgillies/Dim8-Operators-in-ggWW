@@ -6,9 +6,10 @@ import sys
 sys.path.insert(1, '..')
 from plot_funcs import round_to_5, array_for_plot
 
-bins=round_to_5(np.logspace(np.log10(200), np.log10(4000), 17))
-bin_widths=bins[1:17]-bins[0:16]
-bin_widths18=np.array([41.1817, 41.1817, 49.6614, 59.8871, 72.2183, 87.0887, 105.021, 126.6458, 152.7232, 184.1698, 222.093, 267.823, 322.97, 389.473, 469.668, 566.377, 682.999, 682.999])
+bins=round_to_5(np.logspace(2.1384012462059836, np.log10(4000), 19))
+bin_widths=bins[1:]-bins[0:len(bins)-1]
+bin_widths18=array_for_plot(bin_widths)
+
 
 bins15 = [0, 55, 75, 85, 95, 110, 125, 140, 160, 185, 220, 280, 380, 600, 1500]
 bin_centres_atlas = [65, 80, 90, 102.5, 117.5, 132.5, 150, 172.5, 202.5, 250, 330, 490, 1050]
@@ -18,10 +19,6 @@ atlas=array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_atlas.np
 atlas_err=array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_atlas_err.npy"))
 abs_stat_err=array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_atlas_stat_err.npy"))
 abs_syst_err=array_for_plot(np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_atlas_syst_err.npy"))
-
-#print(atlas)
-#print(abs_stat_err)
-#print(atlas_err)
 
 nnllnnlonloew_ggphoton_centre=2*3000*array_for_plot(np.load("../SM_Construction/mll_14TeV_veto35_sm_centre.npy"))
 nnllnnlonloew_ggphoton_min=2*3000*array_for_plot(np.load("../SM_Construction/mll_14TeV_veto35_sm_min.npy"))
@@ -69,7 +66,7 @@ plt.plot(x_vals, 4.8637+ 0.019543*x_vals, color="grey", label="Systematic error 
 
 
 
-bins18=np.concatenate(([200], bins))
+bins18=np.concatenate(([bins[0]], bins))
 
 #Poisson error based on current predictions.
 

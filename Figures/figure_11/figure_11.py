@@ -7,9 +7,9 @@ sys.path.insert(1, '..')
 from factor_conversions import kg2lam, kgtilde2lam, lam2kg, lam2kgtilde
 from plot_funcs import fmt
 
-points_x=np.load("points_x_kg.npy")
-points_y=np.load("points_y_kg.npy")
-deltachisqs_all=np.load("deltachisqs_all.npy")
+points_x=np.load("points_x_kg_05.npy")
+points_y=np.load("points_y_kg_05.npy")
+deltachisqs_all=np.load("deltachisqs_all_05.npy")
 
 
      
@@ -88,9 +88,12 @@ for i, collection in enumerate(CS.collections):
             vertices = path.vertices  # Extract the vertices of the path
             plt.plot(xs2, ys2)
             #Have to manually vary these ranges to select the correct points.
-            xs2=np.concatenate((vertices[0:440,0], vertices[1400:2400,0], vertices[3500:4250,0], vertices[5200:6200,0], vertices[7140:,0]))
-            ys2=np.concatenate((vertices[0:440,1], vertices[1400:2400,1], vertices[3500:4250,1], vertices[5200:6200,1], vertices[7140:,1]))
-            
+            #xs2=np.concatenate((vertices[0:440,0], vertices[1400:2400,0], vertices[3500:4250,0], vertices[5200:6200,0], vertices[7140:,0]))
+            #ys2=np.concatenate((vertices[0:440,1], vertices[1400:2400,1], vertices[3500:4250,1], vertices[5200:6200,1], vertices[7140:,1]))
+            xs2=np.concatenate((vertices[1400:2150,0], vertices[3000:4400,0], vertices[5420:7000,0], vertices[7750:9400,0], vertices[10200:,0]))
+            ys2=np.concatenate((vertices[1400:2150,1], vertices[3000:4400,1], vertices[5420:7000,1], vertices[7750:9400,1], vertices[10200:,1]))
+        
+
             
             plt.plot(xs2, ys2, "r")
             plt.savefig("3_vertices.pdf")
@@ -152,8 +155,8 @@ plt.plot([-0.6, 0.4], [-2, -2], '--', color="k", markersize=14)
 plt.plot([-0.6, -0.6], [-2, 2], '--', color="k", markersize=14)
 plt.plot([0.4, 0.4], [-2, 2], '--', color="k", markersize=14)
 plt.plot(0, 0, 'x', color="r", label="Standard Model", markersize=10)
-plt.xlim(-9, 9)
-plt.ylim(-10, (2/3)*9)
+plt.xlim(-1.5*9, 1.5*9)
+plt.ylim(-1.5*10, 1.5*(2/3)*9)
 plt.xticks(fontsize=22)
 plt.yticks(fontsize=22)
 plt.legend(fontsize=20, loc="lower right")
