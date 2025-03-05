@@ -93,8 +93,8 @@ for i, collection in enumerate(CS.collections):
             #Have to manually vary these ranges to select the correct points.
             #xs2=np.concatenate((vertices[4200:4600,0], vertices[2350:3170,0], vertices[4000:4700,0], vertices[5600:6450,0]))
             #ys2=np.concatenate((vertices[4200:4600,1], vertices[2350:3170,1], vertices[4000:4700,1], vertices[5600:6450,1]))
-            xs2=np.concatenate((vertices[800:1200,0], vertices[1820:2750,0], vertices[3500:4250,0], vertices[4900:5950,0], vertices[6500:6940,0]))
-            ys2=np.concatenate((vertices[800:1200,1], vertices[1820:2750,1], vertices[3500:4250,1], vertices[4900:5950,1], vertices[6500:6940,1]))
+            xs2=np.concatenate((vertices[1600:2400,0], vertices[3520:4450,0], vertices[6000:6940,0], vertices[8400:9440,0]))
+            ys2=np.concatenate((vertices[1600:2400,1], vertices[3520:4450,1], vertices[6000:6940,1], vertices[8400:9440,1]))
             
             
             plt.plot(xs2, ys2, "r")
@@ -169,8 +169,8 @@ for i, collection in enumerate(CS.collections):
             #Have to manually vary these ranges to select the correct points.
 
             #Use all in this case since discontoniuties are minimal.
-            #xs1=np.concatenate((vertices[130:440,0], vertices[740:990,0], vertices[1280:1590,0], vertices[1860:2140,0]))
-            #ys1=np.concatenate((vertices[130:440,1], vertices[740:990,1], vertices[1280:1590,1], vertices[1860:2140,1]))
+            xs1=np.concatenate((vertices[0:340,0], vertices[1280:2140,0], vertices[2700:3390,0], vertices[3960:5000,0], vertices[5960:6250,0]))
+            ys1=np.concatenate((vertices[0:340,1], vertices[1280:2140,1], vertices[2700:3390,1], vertices[3960:5000,1], vertices[5960:6250,1]))
             
             
             plt.plot(xs1, ys1, "r")
@@ -191,7 +191,7 @@ for i, collection in enumerate(CS.collections):
 
 
 
-fig, ax = plt.subplots(figsize=(1.1*10, 1.1*(8/9)*10), dpi=1000)
+fig, ax = plt.subplots(figsize=(1.1*10, 1.1*(5.3/6)*10), dpi=1000)
 
 secax = ax.secondary_xaxis('top', functions=(kg2lam, lam2kg))
 secax.set_xticks([-10, -9, -8, -7, -6, -5, -4, -3, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -200,8 +200,8 @@ secax.tick_params(which="both", labelsize=22, direction='in')
 secax.set_xlabel(r'Equivalent $\Lambda\,$[TeV]', fontsize=28)
 
 secay = ax.secondary_yaxis('right', functions=(kgtilde2lam, lam2kgtilde))
-secay.set_yticks([-6, -5, -4, -3, -2, 3, 4, 5, 6])
-secay.set_yticklabels([6, 5, 4, 3, 2, 3, 4, 5, 6])
+secay.set_yticks([-6, -5, -4, -3, -2, 2, 3, 4, 5, 6])
+secay.set_yticklabels([6, "", 4, "", 2, 2, "", 4, "", 6])
 secay.tick_params(which="both", labelsize=22, direction='in')
 secay.set_ylabel(r'Equivalent $\Lambda\,$[TeV]', fontsize=28)
 
@@ -258,8 +258,8 @@ plt.plot([-0.6/3, 0.4/3], [-2/3, -2/3], '--', color="k", markersize=14)
 plt.plot([-0.6/3, -0.6/3], [-2/3, 2/3], '--', color="k", markersize=14)
 plt.plot([0.4/3, 0.4/3], [-2/3, 2/3], '--', color="k", markersize=14)
 plt.plot(0, 0, 'x', color="r", label="Standard Model", markersize=10)
-plt.xlim(-3, 3)
-plt.ylim(-3.5, (2/3)*3)
+plt.xlim(-1.75*3, 1.75*3)
+plt.ylim(-1.75*3.3, 1.75*(2/3)*3)
 plt.xticks(fontsize=22)
 plt.yticks(fontsize=22)
 plt.legend(fontsize=20, loc="lower right")
