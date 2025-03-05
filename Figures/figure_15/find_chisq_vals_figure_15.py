@@ -168,11 +168,10 @@ def _construct_new_prediction_k2k3(k2, k3):
 
 
 
-def fac_to_max_bin(factor_vals):
+def fac_to_max_bin(factor_vals, max_mass_scales):
     #Take the factor and calculate the relevant mass scale (assuming c=1 and factor is given as kappa)
     mass_vals=fac2lam(factor_vals)
-    #Minimum mass scales required to use each bin given in TeV. e.g. 55-75GeV bin requires mass scale of 124GeV (0.12458383TeV) or higher.
-    max_mass_scales=np.array([0.12458383, 0.19735961, 0.29153842, 0.34352475, 0.40114594, 0.45812857, 0.50765992, 0.57883101, 0.68620833, 0.82708867, 1.030653, 1.34274721, 1.99743379])
+    print(max_mass_scales)
     which_bin=[]
     for i in range(0, len(mass_vals)):
         #The counter increases for every bin until a bin is encoutered which requires a higher mass scale than the factor represents.
@@ -185,29 +184,17 @@ def fac_to_max_bin(factor_vals):
         which_bin.append(counter)
     return which_bin
 
-"""
-def kgtilde_to_max_bin(factor_vals):
-    mass_vals=fac2lam(factor_vals)
-    max_mass_scales=np.array([0.12458383, 0.19735961, 0.29153842, 0.34352475, 0.40114594, 0.45812857, 0.50765992, 0.57883101, 0.68620833, 0.82708867, 1.030653, 1.34274721, 1.99743379])
-    which_bin=[]
-    for i in range(0, len(mass_vals)):
-        counter=-1
-        for j in range(0, len(max_mass_scales)):
-            if abs(mass_vals[i])>max_mass_scales[j]:
-                counter+=1
-            else:
-                break
-        which_bin.append(counter)
-    return which_bin
-"""
+#This vector gives minimum value of Lambda for each of the bins. E.g bin 185-220GeV can only \
+# be used if Lambda is bigger than 1150GeV.
+
+max_mass_scales=np.load("../min_Lambda_for_each_bin/lambda_min_empirical_13TeV_veto35.npy")
 
 
+k2_vals=np.linspace(-25, 25, 2000)
+k3_vals=np.linspace(-25, 25, 2000)
 
-k2_vals=np.linspace(-2, 2, 800)
-k3_vals=np.linspace(-2, 2, 800)
 
-
-points_x, points_y, deltachisqs_all=produce_contours_ATLAS(k2_vals, k3_vals, atlas, atlas_err, _construct_new_prediction_k2k3, lam2fac, lam2fac, fac_to_max_bin, fac_to_max_bin, min_bin=3)
+points_x, points_y, deltachisqs_all=produce_contours_ATLAS("atlas_o2o3", k2_vals, k3_vals, atlas, atlas_err, _construct_new_prediction_k2k3, lam2fac, lam2fac, fac2lam, fac2lam, fac_to_max_bin, fac_to_max_bin, max_mass_scales, min_bin=3)
 
 np.save("points_x_k2", np.array(points_x))
 np.save("points_y_k3", np.array(points_y))

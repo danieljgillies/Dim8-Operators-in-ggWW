@@ -20,14 +20,14 @@ deltachisqs_all=np.load("deltachisqs_all.npy")
 fig, ax = plt.subplots(figsize=(1.1*10, 1.1*(16/18)*10), dpi=100)
 
 secax = ax.secondary_xaxis('top', functions=(fac2lam, lam2fac))
-secax.set_xticks([-2, -1, -0.85, 0.85, 1, 2])
-secax.set_xticklabels([2, 1, 0.85, 0.85, 1, 2])
+secax.set_xticks([-2, -1, -0.9, 0.9, 1, 2])
+secax.set_xticklabels([2, 1, 0.9, 0.9, 1, 2])
 secax.tick_params(which="both", labelsize=22, direction='in')
 secax.set_xlabel(r'Equivalent $\Lambda\,$[TeV]', fontsize=28)
 
 secay = ax.secondary_yaxis('right', functions=(fac2lam, lam2fac))
-secay.set_yticks([-2, -1, -0.85, 0.85, 1, 2])
-secay.set_yticklabels([2, 1, 0.85, 0.85, 1, 2])
+secay.set_yticks([-2, -1, -0.9, 0.9, 1, 2])
+secay.set_yticklabels([2, 1, 0.9, 0.9, 1, 2])
 secay.tick_params(which="both", labelsize=22, direction='in')
 secay.set_ylabel(r'Equivalent $\Lambda\,$[TeV]', fontsize=28)
 
@@ -38,8 +38,8 @@ ax.clabel(CS, CS.levels, inline=True, fmt=fmt, fontsize=16)
 plt.ylabel(r"$\frac{c_2 \mathrm{(2TeV)}^4}{\Lambda^4}$", fontsize=32)
 plt.xlabel(r"$\frac{c_3 \mathrm{(2TeV)}^4}{\Lambda^4}$", fontsize=32)
 plt.plot(0, 0, 'x', color="r", label="Standard Model", markersize=10)
-plt.xlim(-2, 2)
-plt.ylim(-2.5, 2)
+#plt.xlim(-2, 2)
+#plt.ylim(-2.5, 2)
 plt.xticks(fontsize=22)
 plt.yticks(fontsize=22)
 plt.legend(fontsize=20, loc="lower right")
@@ -82,8 +82,8 @@ for i, collection in enumerate(CS.collections):
             plt.plot(xs2, ys2)
 
             #Have to manually vary these ranges to select the correct points.
-            xs2=np.concatenate((vertices[130:440,0], vertices[740:990,0], vertices[1280:1590,0], vertices[1860:2140,0]))
-            ys2=np.concatenate((vertices[130:440,1], vertices[740:990,1], vertices[1280:1590,1], vertices[1860:2140,1]))
+            xs2=np.concatenate((vertices[0:730,0], vertices[2800:5966,0], vertices[12200:13300,0], vertices[9500:10100,0]))
+            ys2=np.concatenate((vertices[0:730,1], vertices[2800:5966,1], vertices[12200:13300,1], vertices[9500:10100,1]))
             
             
             plt.plot(xs2, ys2, "r")
@@ -91,17 +91,17 @@ for i, collection in enumerate(CS.collections):
 
 
 
-fig, ax = plt.subplots(figsize=(1.1*10, 1.1*(8/9)*10), dpi=100)
+fig, ax = plt.subplots(figsize=(1.1*10, 1.1*10), dpi=100)
 
 secax = ax.secondary_xaxis('top', functions=(fac2lam, lam2fac))
-secax.set_xticks([-2, -1, -0.85, 0.85, 1, 2])
-secax.set_xticklabels([2, 1, 0.85, 0.85, 1, 2])
+secax.set_xticks([-2, -1, -0.9, 0.9, 1, 2])
+secax.set_xticklabels([2, 1, 0.9, 0.9, 1, 2])
 secax.tick_params(which="both", labelsize=22, direction='in')
 secax.set_xlabel(r'Equivalent $\Lambda\,$[TeV]', fontsize=28)
 
 secay = ax.secondary_yaxis('right', functions=(fac2lam, lam2fac))
-secay.set_yticks([-2, -1, -0.85, 0.85, 1, 2])
-secay.set_yticklabels([2, 1, 0.85, 0.85, 1, 2])
+secay.set_yticks([-2, -1, -0.9, 0.9, 1, 2])
+secay.set_yticklabels([2, 1, 0.9, 0.9, 1, 2])
 secay.tick_params(which="both", labelsize=22, direction='in')
 secay.set_ylabel(r'Equivalent $\Lambda\,$[TeV]', fontsize=28)
 
@@ -111,8 +111,8 @@ ax.tick_params(which="both", labelsize=13, direction='in')
 A = np.column_stack((xs2**2, xs2 * ys2, ys2**2, xs2, ys2))
 b = np.ones_like(xs2)
 x = np.linalg.lstsq(A, b)[0].squeeze()
-x_coord = np.linspace(-10,10,300)
-y_coord = np.linspace(-10,10,300)
+x_coord = np.linspace(-30,30,500)
+y_coord = np.linspace(-30,30,500)
 X_coord, Y_coord = np.meshgrid(x_coord, y_coord)
 Z_coord = x[0] * X_coord ** 2 + x[1] * X_coord * Y_coord + x[2] * Y_coord**2 + x[3] * X_coord + x[4] * Y_coord
 
@@ -143,8 +143,8 @@ ax.add_patch(polygon)
 plt.ylabel(r"$\frac{c_2 \mathrm{(2TeV)}^4}{\Lambda^4}$", fontsize=32)
 plt.xlabel(r"$\frac{c_3 \mathrm{(2TeV)}^4}{\Lambda^4}$", fontsize=32)
 plt.plot(0, 0, 'x', color="r", label="Standard Model", markersize=10)
-plt.xlim(-2, 2)
-plt.ylim(-2.5, 2)
+plt.xlim(-28, 28)
+plt.ylim(-32, 28)
 plt.xticks(fontsize=22)
 plt.yticks(fontsize=22)
 plt.legend(fontsize=20, loc="lower right")
