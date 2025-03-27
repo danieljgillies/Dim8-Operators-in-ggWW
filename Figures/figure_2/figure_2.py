@@ -264,7 +264,7 @@ rec2 = plt.Rectangle((3700/4,-0.2),4000-3700/4,2.2, facecolor="#d3d3d3",
 
 axs[0].add_patch(rec1)
 axs[1].add_patch(rec2)
-axs[0].annotate(r'$\Lambda=$'+str(mass_scale)+r' TeV', (220, 1.5),\
+axs[0].annotate(r'$\Lambda=$'+str(mass_scale)+r' TeV', (150, 1.5),\
                fontsize=16,color="#3b3b3b")
 
 
