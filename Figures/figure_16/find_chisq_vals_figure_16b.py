@@ -9,6 +9,8 @@ sys.path.insert(1, '..')
 from factor_conversions import fac2lam,lam2fac
 from withpseudodata_find_chisq_vals import _chisq, produce_contours_ATLAS
 
+
+#Standard Model qq contribution
 nnlonloew_noveto_centre=2*3000*np.load("../QCD_EW_Combination/mll_14TeV_noveto_sm_qq_nnlo_qcd_cross_nlo_ew_centre.npy")
 nnlonloew_noveto_min=2*3000*np.load("../QCD_EW_Combination/mll_14TeV_noveto_sm_qq_nnlo_qcd_cross_nlo_ew_min.npy")
 nnlonloew_noveto_max=2*3000*np.load("../QCD_EW_Combination/mll_14TeV_noveto_sm_qq_nnlo_qcd_cross_nlo_ew_max.npy")
@@ -23,11 +25,13 @@ nnlonloew_noveto_200200=2*3000*np.load("../QCD_EW_Combination/mll_14TeV_noveto_s
 
 err_qq=(nnlonloew_noveto_max-nnlonloew_noveto_min)/2
 
-
+#Standard Model gamma gamma (photon) contribution
 nlophoton_noveto_MWWover2=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_mufac=0.50MWW.npy")
 nlophoton_noveto_MWWover4=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_mufac=0.25MWW.npy")
 nlophoton_noveto_MWW=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gamgam_nlo_mufac=1.00MWW.npy")
 
+
+#Standard Model gluon gluon contribution
 gglo_050050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy")
 gglo_025025=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy")
 gglo_025050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy")
@@ -37,12 +41,12 @@ gglo_100050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14T
 gglo_100100=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_sm_gg_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy")
 
 
-
+#Standard Model qq+gg+gammagamma
 sm=2*3000*np.load("../SM_Construction/mll_14TeV_noveto_sm_centre.npy")
 sm_min=2*3000*np.load("../SM_Construction/mll_14TeV_noveto_sm_min.npy")
 sm_max=2*3000*np.load("../SM_Construction/mll_14TeV_noveto_sm_max.npy")
 
-
+# Operator 2 gg -> WW SM interference dimension-8 <-
 k2lo_050050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy")
 k2lo_025025=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy")
 k2lo_025050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy")
@@ -51,7 +55,7 @@ k2lo_050100=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14T
 k2lo_100050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy")
 k2lo_100100=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy")
 
-
+# Operator 2 gg -> WW dimension-8 squared
 k22lo_050050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy")
 k22lo_025025=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy")
 k22lo_025050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy")
@@ -60,7 +64,7 @@ k22lo_050100=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14
 k22lo_100050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy")
 k22lo_100100=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy")
 
-
+# Operator 3 gg -> WW SM interference dimension-8 <-
 k3lo_050050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy")
 k3lo_025025=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy")
 k3lo_025050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy")
@@ -69,7 +73,7 @@ k3lo_050100=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14T
 k3lo_100050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy")
 k3lo_100100=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy")
 
-
+# Operator 3 gg -> WW dimension-8 squared
 k32lo_050050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy")
 k32lo_025025=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy")
 k32lo_025050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy")
@@ -78,7 +82,7 @@ k32lo_050100=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14
 k32lo_100050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy")
 k32lo_100100=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy")
 
-
+# Operator 2 and 3 gg -> WW dimension-8 squared
 k22k32lo_050050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2O3int_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy")
 k22k32lo_025025=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2O3int_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy")
 k22k32lo_025050=2*3000*np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2O3int_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy")
@@ -96,6 +100,7 @@ k22k32intlo_100050=k22k32lo_100050 - k22lo_100050 - k32lo_100050
 k22k32intlo_100100=k22k32lo_100100 - k22lo_100100 - k32lo_100100
 
 def _construct_new_prediction_k2k3(k2, k3):
+    #            SM qq                   SM gg          SM photon                   O2 int <-              O2 sq               O3 int  <-             O3 sq                    O2-O3 int      
     bsm_050050=nnlonloew_noveto_100100+gglo_050050+nlophoton_noveto_MWWover2+((k2)*k2lo_050050 + (k2**2)*k22lo_050050 + (k3)*k3lo_050050 + (k3**2)*k32lo_050050 + (k2*k3)*k22k32intlo_050050)
     bsm_025025=nnlonloew_noveto_050050+gglo_025025+nlophoton_noveto_MWWover4+((k2)*k2lo_025025 + (k2**2)*k22lo_025025 + (k3)*k3lo_025025 + (k3**2)*k32lo_025025 + (k2*k3)*k22k32intlo_025025)
     bsm_025050=nnlonloew_noveto_050100+gglo_025050+nlophoton_noveto_MWWover2+((k2)*k2lo_025050 + (k2**2)*k22lo_025050 + (k3)*k3lo_025050 + (k3**2)*k32lo_025050 + (k2*k3)*k22k32intlo_025050)
@@ -143,7 +148,7 @@ def fac_to_max_bin(factor_vals, max_mass_scales):
 #This vector gives minimum value of Lambda for each of the bins. E.g bin1 200-214GeV can only \
 # be used if Lambda is bigger than 1260GeV.
 max_mass_scales=np.load("../min_Lambda_for_each_bin/lambda_min_empirical_14TeV_noveto.npy")
-
+max_mass_scales=np.zeros(len(max_mass_scales))
 k2_vals=np.linspace(-8.56, 8.56, 2000)
 k3_vals=np.linspace(-8.56, 8.56, 2000)
 def round_to_5(x):
