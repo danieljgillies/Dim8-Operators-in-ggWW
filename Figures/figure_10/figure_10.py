@@ -62,7 +62,7 @@ plt.figure(figsize=(20, 15),dpi=100)
 fig, axs = plt.subplots(3, 1, gridspec_kw={'height_ratios': [4, 1, 1]}, sharex=True)
 axs[2].set_xlabel(r"$M_{e\mu}$ $[GeV]$ ",\
                fontsize=16,color="black")
-axs[0].set_ylabel(r"$\frac{d\sigma}{m_{WW}}$ $\left[\frac{\mathrm{fb}}{\mathrm{GeV}}\right]$ ",\
+axs[0].set_ylabel(r"$\frac{d\sigma}{dM_{e\mu}}$ $\left[\frac{\mathrm{fb}}{\mathrm{GeV}}\right]$ ",\
                fontsize=20,color="black")
 axs[1].set_ylabel(r"$\frac{\mathrm{Models}}{\mathrm{Data}}$",\
                fontsize=12,color="black")
