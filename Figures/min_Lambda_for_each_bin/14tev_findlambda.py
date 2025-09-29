@@ -110,12 +110,13 @@ plt.plot(b, np.exp(nll(np.log(b))), 'r--')
 plt.loglog()
 plt.xlabel(r"$M_{e\mu}\ \left[\mathrm{TeV}\right]$",\
                fontsize=16,color="black")
-plt.ylabel(r"$\Lambda_{\mathrm{Min}}\ \left[\mathrm{TeV}\right]$",\
+plt.ylabel(r"$\Lambda_{\min}\ \left[\mathrm{TeV}\right]$",\
                fontsize=16,color="black")
-plt.xlim(137.5312, 4000)
+
 plt.tick_params(labelsize=13)
-plt.xticks([200, 1000, 10000, 14000], labels=[r"$0.2$", r"$1$", r"$10$", r"$14$"])
+plt.xticks([200, 1000, 2000, 3000, 4000, 5000, 6000], labels=[r"$0.2$", r"$1$", r"$2$", r"$3$", r"$4$", r"$5$", r"$6$"])
 plt.yticks([1000, 10000], labels=[r"$1$", r"$10$"])
 plt.tight_layout()
+plt.xlim(151.69065, 6000)
 plt.legend(fontsize=11, columnspacing=0.8)
 plt.savefig("mass_scale_14tev.pdf")
