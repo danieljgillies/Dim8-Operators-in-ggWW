@@ -8,21 +8,21 @@ nnllnnlonloew_max=np.load("../QCD_EW_Combination/mll_13TeV_veto35_sm_qq_nnllnnlo
 
 print(nnllnnlonloew_centre)
 #We load the nlo photon contribution.
-nlophoton_MWWover2=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=0.5MWW.npy")
-nlophoton_MWWover4=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=0.25MWW.npy")
-nlophoton_MWW=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=1.0MWW.npy")
+nlophoton_MWWover2=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=0.5MWW.npy")
+nlophoton_MWWover4=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=0.25MWW.npy")
+nlophoton_MWW=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gamgam_nlo_mufac=1.0MWW.npy")
 
 
 #We load the nll gluon contribution.
-ggnll_050050050=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-ggnll_050050025=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy")
-ggnll_050050100=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy")
-ggnll_025025050=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
-ggnll_025050050=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-ggnll_050025050=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
-ggnll_050100050=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
-ggnll_100050050=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
-ggnll_100100050=np.load("../Data/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
+ggnll_050050050=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+ggnll_050050025=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy")
+ggnll_050050100=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy")
+ggnll_025025050=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
+ggnll_025050050=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+ggnll_050025050=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy")
+ggnll_050100050=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
+ggnll_100050050=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy")
+ggnll_100100050=np.load("../Data_numpy_for_figures/13TeV_ATLAS/mll_13TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy")
 
 
 print(ggnll_050050050)

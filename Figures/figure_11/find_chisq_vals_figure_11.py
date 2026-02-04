@@ -110,11 +110,9 @@ def _construct_new_prediction_kgktodd(kg, kgtilde):
     return [bsm_nnllnnlonloew_ggphoton_centre, bsm_nnllnnlonloew_ggphoton_min, bsm_nnllnnlonloew_ggphoton_max]
 
 
-def kg_to_max_bin(factor_vals):
+def kg_to_max_bin(factor_vals, max_mass_scales):
     #Take the factor and calculate the relevant mass scale (assuming c=1 and factor is given as kappa)
     mass_vals=kg2lam(factor_vals)
-    #Minimum mass scales required to use each bin given in TeV. e.g. 55-75GeV bin requires mass scale of 124GeV (0.12458383TeV) or higher.
-    max_mass_scales=np.array([0.12458383, 0.19735961, 0.29153842, 0.34352475, 0.40114594, 0.45812857, 0.50765992, 0.57883101, 0.68620833, 0.82708867, 1.030653, 1.34274721, 1.99743379])
     which_bin=[]
     for i in range(0, len(mass_vals)):
         #The counter increases for every bin until a bin is encoutered which requires a higher mass scale than the factor represents.
@@ -127,9 +125,8 @@ def kg_to_max_bin(factor_vals):
         which_bin.append(counter)
     return which_bin
 
-def kgtilde_to_max_bin(factor_vals):
+def kgtilde_to_max_bin(factor_vals, max_mass_scales):
     mass_vals=kgtilde2lam(factor_vals)
-    max_mass_scales=np.array([0.12458383, 0.19735961, 0.29153842, 0.34352475, 0.40114594, 0.45812857, 0.50765992, 0.57883101, 0.68620833, 0.82708867, 1.030653, 1.34274721, 1.99743379])
     which_bin=[]
     for i in range(0, len(mass_vals)):
         counter=0
@@ -143,13 +140,17 @@ def kgtilde_to_max_bin(factor_vals):
 
 
 kg_vals=np.linspace(-10, 10, 2000)
-kgtilde_vals=np.linspace(-10, 10, 2000)
+kgtilde_vals=np.linspace(-7, 7, 2000)
 
+#This vector gives minimum value of Lambda for each of the bins. E.g bin 185-220GeV can only \
+# be used if Lambda is bigger than 1150GeV.
 
+max_mass_scales=np.load("../min_Lambda_for_each_bin/lambda_min_empirical_13TeV_veto35.npy")
+print(max_mass_scales)
+points_x, points_y, deltachisqs_all=produce_contours_ATLAS("atlas_kg_05", kg_vals, kgtilde_vals, atlas, atlas_err, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg2lam, kgtilde2lam, kg_to_max_bin, kgtilde_to_max_bin, max_mass_scales, min_bin=3)
 
-points_x, points_y, deltachisqs_all=produce_contours_ATLAS("atlas_kg", kg_vals, kgtilde_vals, atlas, atlas_err, _construct_new_prediction_kgktodd, lam2kg, lam2kgtilde, kg2lam, kgtilde2lam, kg_to_max_bin, kgtilde_to_max_bin, min_bin=3)
+np.save("points_x_kg_05", np.array(points_x))
+np.save("points_y_kg_05", np.array(points_y))
+np.save("deltachisqs_all_05", np.array(deltachisqs_all))
 
-np.save("points_x_kg", np.array(points_x))
-np.save("points_y_kg", np.array(points_y))
-np.save("deltachisqs_all", np.array(deltachisqs_all))
 

@@ -6,10 +6,9 @@ sys.path.insert(1, '..')
 
 from plot_funcs import round_to_5, array_for_plot
 
-bins=round_to_5(np.logspace(np.log10(200), np.log10(4000), 17))
-bin_widths=bins[1:17]-bins[0:16]
-bin_widths18=np.array([41.1817, 41.1817, 49.6614, 59.8871, 72.2183, 87.0887, 105.021, 126.6458, 152.7232, 184.1698, 222.093, 267.823, 322.97, 389.473, 469.668, 566.377, 682.999, 682.999])
-
+bins=round_to_5(np.logspace(2.1384012462059836, np.log10(4000), 19))
+bin_widths=bins[1:]-bins[0:len(bins)-1]
+bin_widths18=array_for_plot(bin_widths)
 
 nnllnnlonloew_centre=2*3000*array_for_plot(np.load("../QCD_EW_Combination/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_cross_nlo_ew_centre.npy"))
 nnllnnlonloew_min=2*3000*array_for_plot(np.load("../QCD_EW_Combination/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_cross_nlo_ew_min.npy"))
@@ -28,15 +27,15 @@ ggnll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_v
 
 
 
-ggnll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-ggnll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-ggnll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-ggnll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-ggnll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-ggnll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-ggnll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-ggnll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-ggnll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+ggnll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+ggnll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+ggnll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+ggnll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+ggnll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+ggnll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+ggnll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+ggnll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+ggnll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_gg_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 sm=2*3000*array_for_plot(np.load("../SM_Construction/mll_14TeV_veto35_sm_centre.npy"))
@@ -82,14 +81,14 @@ axs[0].annotate(r'$\sqrt{s} = 14$TeV, $\, p p\, \to\, e^{\pm}\nu\mu^{\mp}\nu$,  
             va='top',
             multialignment='left')
 axs[0].annotate(r'NNPDF31_nnlo_as_0118_luxqed_nf_4', 
-            xy=(205, 2*0.49*10**1), 
+            xy=(205,  2*0.49*10**1), 
             fontsize=13,
             alpha=0.5,
             color="k",
             ha='left', 
             va='top',
             multialignment='left')
-bin_centres=(bins[0:16] + bins[1:17])/2
+bin_centres=(bins[0:len(bins)-1] + bins[1:])/2
 
 bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
 
@@ -125,8 +124,8 @@ axs[0].fill_between(bin_centres, ggnll_min/(bin_widths18*3000), ggnll_max/(bin_w
 
 
 axs[0].legend(loc="lower left", fontsize=11, frameon=False)
-axs[0].set_xlim(200, 4000)
-axs[0].set_ylim(5*10**-12, 4*10**3)
+axs[0].set_xlim(137.5312, 4000)
+axs[0].set_ylim(2*10**-11, 4*10**3)
 
 
 #Since we do not have the breakdown in terms of $\mu_r$ and $\mu_f$ we can only add errors in quadrature for ratios.
@@ -171,7 +170,7 @@ axs[1].fill_between(bin_centres, 100*((nnllnnlonloew_centre/sm)-err), 100*((nnll
 
 axs[1].loglog()
 
-axs[1].set_ylim(10**-2, 120)
+axs[1].set_ylim(10**-2, 200)
 axs[0].set_xticks([200, 1000, 4000])
 axs[0].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
 

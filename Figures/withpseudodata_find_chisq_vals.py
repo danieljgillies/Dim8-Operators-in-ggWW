@@ -37,7 +37,7 @@ def _chisq(expected, observed, _delta, min_bin, max_bin):
     
     """     
     if np.isscalar(observed[0]):
-        if len(observed)==16 and len(expected)==16 and len(_delta)==16:
+        if len(observed)==18 and len(expected)==18 and len(_delta)==18:
             #all_delta=(((systematic_error)**2)+(_delta**2))**0.5
             #all_delta=_delta
             chisq=((observed - expected)**2)/(expected+(_delta)**2)
@@ -46,7 +46,7 @@ def _chisq(expected, observed, _delta, min_bin, max_bin):
             raise("Error unexpected number of bins")
     else:
         #print(observed.shape[-1])
-        if observed.shape[-1]==16 and len(expected)==16 and len(_delta)==16:
+        if observed.shape[-1]==18 and len(expected)==18 and len(_delta)==18:
             #all_delta=(((systematic_error)**2)+(_delta**2))**0.5
             #all_delta=_delta
             chisq=((observed - expected)**2)/(expected+(_delta)**2)
@@ -56,7 +56,7 @@ def _chisq(expected, observed, _delta, min_bin, max_bin):
 
 
 
-def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_vals, SM_pred, generate_bsm_prediction, operatorAlambda_to_factor, operatorBlambda_to_factor, operatorAfactor_to_lambda, operatorBfactor_to_lambda, operatorAfactor_to_max_bin, operatorBfactor_to_max_bin, systematic_error=np.array([0]), num_samples=1001, min_bin=0):
+def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_vals, SM_pred, generate_bsm_prediction, operatorAlambda_to_factor, operatorBlambda_to_factor, operatorAfactor_to_lambda, operatorBfactor_to_lambda, operatorAfactor_to_max_bin, operatorBfactor_to_max_bin, max_mass_scales, systematic_error=np.array([0]), num_samples=1001, min_bin=0):
     """
 
     This function takes in experimental data, along with SM and BSM predictions which must be given using\
@@ -121,8 +121,8 @@ def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_val
 
     #Find the maximum bin that can be used to constrain each of the factors given.
 
-    max_bin_operatorA=operatorAfactor_to_max_bin(factor_operatorA_vals)
-    max_bin_operatorB=operatorBfactor_to_max_bin(factor_operatorB_vals)
+    max_bin_operatorA=operatorAfactor_to_max_bin(factor_operatorA_vals, max_mass_scales)
+    max_bin_operatorB=operatorBfactor_to_max_bin(factor_operatorB_vals, max_mass_scales)
     
     #We define a function to minimise the chisquared value based on two input coefficients a1[0], a1[1]
     def _chisq_tominimize(a1, s, max_bin):
@@ -146,8 +146,8 @@ def produce_contours_ATLAS(run_name, factor_operatorA_vals, factor_operatorB_val
     #for each sample we find the minimum chi squared value.
     current_chisqs=[]
     current_chisqs_median=[]
-    max_mass_scales=np.array([0.7504646, 0.88671293, 1.03336473, 1.18834644, 1.35280008, 1.5310028, 1.73055257, 1.95808899, 2.21780199, 2.51666561, 2.86161449, 3.25420555, 3.70412162, 4.21201279, 4.78111762, 5.40612933])
-    for i in tqdm(range(0,17)):
+    #max_mass_scales=np.array([0.7504646, 0.88671293, 1.03336473, 1.18834644, 1.35280008, 1.5310028, 1.73055257, 1.95808899, 2.21780199, 2.51666561, 2.86161449, 3.25420555, 3.70412162, 4.21201279, 4.78111762, 5.40612933])
+    for i in tqdm(range(0,19)):
         #include 16th bin (include zero so that indexing correpsonds to max_bin i.e [0:0]=[0:1]=[0] so first bin should be at index 1.)
         max_bin=i
         minimum_chisqs=[]

@@ -6,24 +6,24 @@ sys.path.insert(1, '..')
 
 from plot_funcs import round_to_5, array_for_plot
 
-bins=round_to_5(np.logspace(np.log10(200), np.log10(4000), 17))
-print(bins)
-bin_widths=bins[1:17]-bins[0:16]
-bin_widths18=np.array([41.1817, 41.1817, 49.6614, 59.8871, 72.2183, 87.0887, 105.021, 126.6458, 152.7232, 184.1698, 222.093, 267.823, 322.97, 389.473, 469.668, 566.377, 682.999, 682.999])
 
+bins=round_to_5(np.logspace(2.1384012462059836, np.log10(4000), 19))
+bin_widths=bins[1:]-bins[0:len(bins)-1]
+bin_widths18=array_for_plot(bin_widths)
 #MATRIX
 
-nnllnnlo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_centre.npy"))
-nnllnnlo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_min.npy"))
-nnllnnlo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_max.npy"))
+nnllnnlo_centre=2*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_centre.npy"))
+nnllnnlo_min=2*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_min.npy"))
+nnllnnlo_max=2*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnllnnlo_qcd_max.npy"))
 
-nnlo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnlo_qcd_centre.npy"))
-nnlo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnlo_qcd_min.npy"))
-nnlo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnlo_qcd_max.npy"))
 
-nnll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnll_qcd_centre.npy"))
-nnll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnll_qcd_min.npy"))
-nnll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnll_qcd_max.npy"))
+nnlo_centre=2*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnlo_qcd_centre.npy"))
+nnlo_min=2*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnlo_qcd_min.npy"))
+nnlo_max=2*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnlo_qcd_max.npy"))
+
+nnll_centre=2*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnll_qcd_centre.npy"))
+nnll_min=2*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnll_qcd_min.npy"))
+nnll_max=2*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_sm_qq_nnll_qcd_max.npy"))
 
 
 
@@ -45,7 +45,7 @@ axs[1].set_ylabel(r" Ratio$_{\mathrm{NNLO}}$ - 1",\
 axs[0].loglog()
 
 axs[0].annotate(r'HL-LHC $\ $(ATLAS Cuts)', 
-            xy=(205, 10**4), 
+            xy=(137.5312+3, 10**4), 
             fontsize=15,
             fontweight="bold",
             alpha=0.5,
@@ -54,7 +54,7 @@ axs[0].annotate(r'HL-LHC $\ $(ATLAS Cuts)',
             va='top',
             multialignment='left')
 axs[0].annotate(r'$\sqrt{s} = 14$TeV, $\, q\bar{q}\, \to\, e^{\pm}\nu\mu^{\mp}\nu$', 
-            xy=(205, 0.8*10**3), 
+            xy=(137.5312+3, 0.8*10**3), 
             fontsize=13,
             alpha=0.5,
             color="k",
@@ -62,37 +62,41 @@ axs[0].annotate(r'$\sqrt{s} = 14$TeV, $\, q\bar{q}\, \to\, e^{\pm}\nu\mu^{\mp}\n
             va='top',
             multialignment='left')
 axs[0].annotate(r'NNPDF31_nnlo_as_0118_luxqed_nf_4', 
-            xy=(205, 0.64*10**2), 
+            xy=(137.5312+3, 0.64*10**2), 
             fontsize=13,
             alpha=0.5,
             color="k",
             ha='left', 
             va='top',
             multialignment='left')
-bin_centres=(bins[0:16] + bins[1:17])/2
+
+
+bin_centres=(bins[0:len(bins)-1] + bins[1:])/2
 
 bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
 
-axs[0].step(bin_centres, nnlo_centre/(bin_widths18*3000), color='k', where='mid', linewidth=0.5)
-axs[0].step(bin_centres, -nnlo_centre/(bin_widths18*3000), color='k', where='mid', label='NNLO')
+print(bin_centres)
 
-axs[0].fill_between(bin_centres, nnlo_min/(bin_widths18*3000), nnlo_max/(bin_widths18*3000),
+axs[0].step(bin_centres, nnlo_centre/(bin_widths18), color='k', where='mid', linewidth=0.5)
+axs[0].step(bin_centres, -nnlo_centre/(bin_widths18), color='k', where='mid', label='NNLO')
+
+axs[0].fill_between(bin_centres, nnlo_min/(bin_widths18), nnlo_max/(bin_widths18),
                      color='k', alpha=0.3, step='mid')
 
-axs[0].step(bin_centres, nnllnnlo_centre/(bin_widths18*3000), color='b', where='mid', linewidth=0.5)
-axs[0].step(bin_centres, -nnllnnlo_centre/(bin_widths18*3000), color='b', where='mid', label='NNLO+NNLL')
+axs[0].step(bin_centres, nnllnnlo_centre/(bin_widths18), color='b', where='mid', linewidth=0.5)
+axs[0].step(bin_centres, -nnllnnlo_centre/(bin_widths18), color='b', where='mid', label='NNLO+NNLL')
 
-axs[0].fill_between(bin_centres, nnllnnlo_min/(bin_widths18*3000), nnllnnlo_max/(bin_widths18*3000),
+axs[0].fill_between(bin_centres, nnllnnlo_min/(bin_widths18), nnllnnlo_max/(bin_widths18),
                      color='b', alpha=0.3, step='mid')
 
-axs[0].step(bin_centres, nnll_centre/(bin_widths18*3000), color='r', where='mid', linewidth=0.5)
-axs[0].step(bin_centres, -nnll_centre/(bin_widths18*3000), color='r', where='mid', label='NNLL')
+axs[0].step(bin_centres, nnll_centre/(bin_widths18), color='r', where='mid', linewidth=0.5)
+axs[0].step(bin_centres, -nnll_centre/(bin_widths18), color='r', where='mid', label='NNLL')
 
-axs[0].fill_between(bin_centres, nnll_min/(bin_widths18*3000), nnll_max/(bin_widths18*3000),
+axs[0].fill_between(bin_centres, nnll_min/(bin_widths18), nnll_max/(bin_widths18),
                      color='r', alpha=0.3, step='mid')
 
 axs[0].legend(loc="upper right", fontsize=11, frameon=False)
-axs[0].set_xlim(200, 4000)
+axs[0].set_xlim(137.5312, 4000)
 axs[0].set_ylim(10**-8, 2*10**4)
 
 

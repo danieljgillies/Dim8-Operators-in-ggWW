@@ -7,200 +7,202 @@ sys.path.insert(1, '..')
 
 from plot_funcs import round_to_5, array_for_plot
 
-bins=round_to_5(np.logspace(np.log10(200), np.log10(4000), 17))
-bin_widths=bins[1:17]-bins[0:16]
-bin_widths18=np.array([41.1817, 41.1817, 49.6614, 59.8871, 72.2183, 87.0887, 105.021, 126.6458, 152.7232, 184.1698, 222.093, 267.823, 322.97, 389.473, 469.668, 566.377, 682.999, 682.999])
+bins=round_to_5(np.logspace(2.1384012462059836, np.log10(4000), 19))
+bin_widths=bins[1:]-bins[0:len(bins)-1]
+bin_widths18=array_for_plot(bin_widths)
 
+bin_centres=(bins[0:len(bins)-1] + bins[1:])/2
+bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
 
 #Load all data
 
 kg2nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_centre.npy"))
 kg2nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_min.npy"))
 kg2nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_max.npy"))
-kg2nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-kg2nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-kg2nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-kg2nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-kg2nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-kg2nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-kg2nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-kg2nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-kg2nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+kg2nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+kg2nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+kg2nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+kg2nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+kg2nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+kg2nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+kg2nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+kg2nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+kg2nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_OGHsq_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 k1nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_centre.npy"))
 k1nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_min.npy"))
 k1nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_max.npy"))
-k1nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k1nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k1nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k1nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k1nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k1nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k1nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k1nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k1nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k1nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k1nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k1nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k1nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k1nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k1nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k1nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k1nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k1nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1SMint_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 k2nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_centre.npy"))
 k2nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_min.npy"))
 k2nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_max.npy"))
-k2nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k2nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k2nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k2nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k2nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k2nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k2nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k2nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k2nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k2nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k2nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k2nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k2nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k2nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k2nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k2nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k2nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k2nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2SMint_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 k3nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_centre.npy"))
 k3nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_min.npy"))
 k3nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_max.npy"))
-k3nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k3nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k3nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k3nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k3nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k3nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k3nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k3nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k3nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k3nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k3nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k3nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k3nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k3nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k3nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k3nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k3nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k3nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3SMint_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 k4nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_centre.npy"))
 k4nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_min.npy"))
 k4nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_max.npy"))
-k4nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k4nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k4nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k4nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k4nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k4nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k4nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k4nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k4nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k4nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k4nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k4nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k4nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k4nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k4nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k4nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k4nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k4nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4SMint_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 k5nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_centre.npy"))
 k5nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_min.npy"))
 k5nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_max.npy"))
-k5nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k5nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k5nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k5nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k5nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k5nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k5nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k5nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k5nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k5nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k5nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k5nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k5nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k5nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k5nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k5nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k5nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k5nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5SMint_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 
 k6nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_centre.npy"))
 k6nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_min.npy"))
 k6nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_max.npy"))
-k6nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k6nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k6nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k6nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k6nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k6nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k6nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k6nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k6nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k6nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k6nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k6nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k6nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k6nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k6nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k6nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k6nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k6nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6SMint_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 
 k12nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_centre.npy"))
 k12nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_min.npy"))
 k12nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_max.npy"))
-k12nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k12nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k12nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k12nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k12nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k12nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k12nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k12nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k12nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k12nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k12nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k12nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k12nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k12nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k12nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k12nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k12nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k12nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O1sq_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 
 k22nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_centre.npy"))
 k22nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_min.npy"))
 k22nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_max.npy"))
-k22nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k22nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k22nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k22nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k22nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k22nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k22nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k22nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k22nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k22nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k22nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k22nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k22nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k22nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k22nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k22nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k22nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k22nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O2sq_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 
 k32nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_centre.npy"))
 k32nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_min.npy"))
 k32nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_max.npy"))
-k32nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k32nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k32nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k32nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k32nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k32nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k32nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k32nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k32nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k32nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k32nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k32nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k32nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k32nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k32nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k32nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k32nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k32nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O3sq_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 
 k42nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_centre.npy"))
 k42nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_min.npy"))
 k42nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_max.npy"))
-k42nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k42nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k42nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k42nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k42nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k42nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k42nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k42nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k42nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k42nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k42nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k42nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k42nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k42nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k42nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k42nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k42nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k42nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O4sq_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 
 k52nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_centre.npy"))
 k52nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_min.npy"))
 k52nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_max.npy"))
-k52nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k52nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k52nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k52nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k52nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k52nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k52nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k52nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k52nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k52nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k52nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k52nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k52nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k52nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k52nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k52nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k52nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k52nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O5sq_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 
 k62nll_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_centre.npy"))
 k62nll_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_min.npy"))
 k62nll_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_max.npy"))
-k62nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k62nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=0.25MWW.npy"))
-k62nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.5MWW_mufac=0.5MWW__muresum=1.0MWW.npy"))
-k62nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k62nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.25MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k62nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.5MWW_mufac=0.25MWW__muresum=0.5MWW.npy"))
-k62nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.5MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
-k62nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=1.0MWW_mufac=0.5MWW__muresum=0.5MWW.npy"))
-k62nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=1.0MWW_mufac=1.0MWW__muresum=0.5MWW.npy"))
+k62nll_050050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k62nll_050050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=0.25MWW.npy"))
+k62nll_050050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.50MWW_mufac=0.50MWW__muresum=1.00MWW.npy"))
+k62nll_025025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.25MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k62nll_025050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.25MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k62nll_050025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.50MWW_mufac=0.25MWW__muresum=0.50MWW.npy"))
+k62nll_050100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=0.50MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
+k62nll_100050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=1.00MWW_mufac=0.50MWW__muresum=0.50MWW.npy"))
+k62nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_veto/mll_14TeV_veto35_bsm_gg_O6sq_nll_qcd_murenorm=1.00MWW_mufac=1.00MWW__muresum=0.50MWW.npy"))
 
 
 
@@ -208,146 +210,146 @@ k62nll_100100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_
 kg2lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_centre.npy"))
 kg2lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_min.npy"))
 kg2lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_max.npy"))
-kg2lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+kg2lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 kg2lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-kg2lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-kg2lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-kg2lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-kg2lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-kg2lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+kg2lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+kg2lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+kg2lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+kg2lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+kg2lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_OGHsq_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k1lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_centre.npy"))
 k1lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_min.npy"))
 k1lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_max.npy"))
-k1lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k1lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k1lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k1lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k1lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k1lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k1lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k1lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k1lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k1lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k1lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k1lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k1lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1SMint_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k2lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_centre.npy"))
 k2lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_min.npy"))
 k2lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_max.npy"))
-k2lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k2lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k2lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k2lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k2lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k2lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k2lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k2lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k2lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k2lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k2lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k2lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k2lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2SMint_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k3lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_centre.npy"))
 k3lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_min.npy"))
 k3lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_max.npy"))
-k3lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k3lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k3lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k3lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k3lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k3lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k3lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k3lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k3lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k3lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k3lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k3lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k3lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3SMint_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k4lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_centre.npy"))
 k4lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_min.npy"))
 k4lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_max.npy"))
-k4lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k4lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k4lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k4lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k4lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k4lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k4lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k4lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k4lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k4lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k4lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k4lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k4lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4SMint_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k5lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_centre.npy"))
 k5lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_min.npy"))
 k5lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_max.npy"))
-k5lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k5lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k5lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k5lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k5lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k5lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k5lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k5lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k5lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k5lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k5lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k5lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k5lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5SMint_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k6lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_centre.npy"))
 k6lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_min.npy"))
 k6lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_max.npy"))
-k6lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k6lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k6lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k6lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k6lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k6lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k6lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k6lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k6lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k6lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k6lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k6lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k6lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6SMint_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k12lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_centre.npy"))
 k12lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_min.npy"))
 k12lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_max.npy"))
-k12lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k12lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k12lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k12lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k12lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k12lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k12lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k12lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k12lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k12lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k12lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k12lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k12lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O1sq_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k22lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_centre.npy"))
 k22lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_min.npy"))
 k22lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_max.npy"))
-k22lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k22lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k22lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k22lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k22lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k22lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k22lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k22lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k22lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k22lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k22lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k22lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k22lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O2sq_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k32lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_centre.npy"))
 k32lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_min.npy"))
 k32lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_max.npy"))
-k32lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k32lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k32lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k32lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k32lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k32lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k32lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k32lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k32lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k32lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k32lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k32lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k32lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O3sq_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k42lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_centre.npy"))
 k42lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_min.npy"))
 k42lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_max.npy"))
-k42lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k42lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k42lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k42lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k42lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k42lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k42lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k42lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k42lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k42lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k42lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k42lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k42lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O4sq_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 k52lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_centre.npy"))
 k52lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_min.npy"))
 k52lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_max.npy"))
-k52lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k52lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k52lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k52lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k52lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k52lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k52lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k52lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k52lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k52lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k52lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k52lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k52lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O5sq_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 
 k62lo_centre=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_centre.npy"))
 k62lo_min=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_min.npy"))
 k62lo_max=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_max.npy"))
-k62lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=0.5MWW_mufac=0.5MWW.npy"))
+k62lo_050050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=0.50MWW_mufac=0.50MWW.npy"))
 k62lo_025025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=0.25MWW_mufac=0.25MWW.npy"))
-k62lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=0.25MWW_mufac=0.5MWW.npy"))
-k62lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=0.5MWW_mufac=0.25MWW.npy"))
-k62lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=0.5MWW_mufac=1.0MWW.npy"))
-k62lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=1.0MWW_mufac=0.5MWW.npy"))
-k62lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=1.0MWW_mufac=1.0MWW.npy"))
+k62lo_025050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=0.25MWW_mufac=0.50MWW.npy"))
+k62lo_050025=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=0.50MWW_mufac=0.25MWW.npy"))
+k62lo_050100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=0.50MWW_mufac=1.00MWW.npy"))
+k62lo_100050=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=1.00MWW_mufac=0.50MWW.npy"))
+k62lo_100100=2*3000*array_for_plot(np.load("../Data_numpy_for_figures/14TeV_HLLHC_noveto/mll_14TeV_noveto_bsm_gg_O6sq_lo_qcd_murenorm=1.00MWW_mufac=1.00MWW.npy"))
 
 
 
@@ -476,15 +478,12 @@ axs[1].set_ylabel("Ratio to LO \n(No Jet Veto)\n",\
                fontsize=14,color="black")
 axs[0].loglog()
 
-bin_centres=(bins[0:16] + bins[1:17])/2
-
-bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
 
 #The data were generated with a mass scale of 2TeV.
 axs[0].annotate(r'$\Lambda=2$TeV', (1800, 0.05),\
                fontsize=18,color="#3b3b3b")
 
-axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1200, 2*10**-11),\
+axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1000, 2*10**-11),\
                fontsize=14,color="#3b3b3b")
 
 
@@ -507,7 +506,7 @@ axs[0].fill_between(bin_centres, k12nll_min/(bin_widths18*3000), k12nll_max/(bin
                      color='r', alpha=0.2, step='mid')
 
 axs[0].legend(loc="lower left", fontsize=11, columnspacing=0.8)
-axs[0].set_xlim(200, 4000)
+axs[0].set_xlim(137.5312, 4000)
 axs[0].set_ylim(10**-11, 0.5)
 axs[0].tick_params(which="both", labelsize=13, direction='in', right=True, top=True, bottom=False)
 axs[1].tick_params(which="both", labelsize=13, direction='in', right=True, pad=10)
@@ -664,14 +663,14 @@ axs[1].set_ylabel("Ratio to LO \n(No Jet Veto)\n",\
 
 axs[0].loglog()
 
-bin_centres=(bins[0:16] + bins[1:17])/2
 
-bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
+
+
 
 #The data were generated with a mass scale of 2TeV.
 axs[0].annotate(r'$\Lambda=2$TeV', (1800, 0.05),\
                fontsize=18,color="#3b3b3b")
-axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1200, 2*10**-11),\
+axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1000, 2*10**-11),\
                fontsize=14,color="#3b3b3b")
 
 
@@ -700,7 +699,7 @@ axs[0].fill_between(bin_centres, k22nll_min/(bin_widths18*3000), k22nll_max/(bin
 
 
 axs[0].legend(loc="lower left", fontsize=11, columnspacing=0.8)
-axs[0].set_xlim(200, 4000)
+axs[0].set_xlim(137.5312, 4000)
 axs[0].set_ylim(10**-11, 0.5)
 axs[0].tick_params(which="both", labelsize=13, direction='in', right=True, top=True, bottom=False)
 axs[1].tick_params(which="both", labelsize=13, direction='in', right=True, pad=10)
@@ -863,14 +862,14 @@ axs[1].set_ylabel("Ratio to LO \n(No Jet Veto)\n",\
 
 axs[0].loglog()
 
-bin_centres=(bins[0:16] + bins[1:17])/2
 
-bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
+
+
 
 #The data were generated with a mass scale of 2TeV.
 axs[0].annotate(r'$\Lambda=2$TeV', (1800, 0.05),\
                fontsize=18,color="#3b3b3b")
-axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1200, 2*10**-11),\
+axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1000, 2*10**-11),\
                fontsize=14,color="#3b3b3b")
 
 
@@ -896,7 +895,7 @@ axs[0].fill_between(bin_centres, k32nll_min/(bin_widths18*3000), k32nll_max/(bin
 
 
 axs[0].legend(loc="lower left", fontsize=11, columnspacing=0.8)
-axs[0].set_xlim(200, 4000)
+axs[0].set_xlim(137.5312, 4000)
 axs[0].set_ylim(10**-11, 0.5)
 axs[0].tick_params(which="both", labelsize=13, direction='in', right=True, top=True, bottom=False)
 axs[1].tick_params(which="both", labelsize=13, direction='in', right=True, pad=10)
@@ -1059,14 +1058,14 @@ axs[1].set_ylabel("Ratio to LO \n(No Jet Veto)\n",\
 
 axs[0].loglog()
 
-bin_centres=(bins[0:16] + bins[1:17])/2
 
-bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
+
+
 
 #The data were generated with a mass scale of 2TeV.
 axs[0].annotate(r'$\Lambda=2$TeV', (1800, 0.05),\
                fontsize=18,color="#3b3b3b")
-axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1200, 2*10**-11),\
+axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1000, 2*10**-11),\
                fontsize=14,color="#3b3b3b")
 
 
@@ -1093,7 +1092,7 @@ axs[0].fill_between(bin_centres, k42nll_min/(bin_widths18*3000), k42nll_max/(bin
 
 
 axs[0].legend(loc="lower left", fontsize=11, columnspacing=0.8)
-axs[0].set_xlim(200, 4000)
+axs[0].set_xlim(137.5312, 4000)
 axs[0].set_ylim(10**-11, 0.5)
 axs[0].tick_params(which="both", labelsize=13, direction='in', right=True, top=True, bottom=False)
 axs[1].tick_params(which="both", labelsize=13, direction='in', right=True, pad=10)
@@ -1256,14 +1255,14 @@ axs[1].set_ylabel("Ratio to LO \n(No Jet Veto)\n",\
 
 axs[0].loglog()
 
-bin_centres=(bins[0:16] + bins[1:17])/2
 
-bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
+
+
 
 #The data were generated with a mass scale of 2TeV.
 axs[0].annotate(r'$\Lambda=2$TeV', (1800, 0.05),\
                fontsize=18,color="#3b3b3b")
-axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1200, 2*10**-11),\
+axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1000, 2*10**-11),\
                fontsize=14,color="#3b3b3b")
 
 
@@ -1290,7 +1289,7 @@ axs[0].fill_between(bin_centres, k52nll_min/(bin_widths18*3000), k52nll_max/(bin
 
 
 axs[0].legend(loc="lower left", fontsize=11, columnspacing=0.8)
-axs[0].set_xlim(200, 4000)
+axs[0].set_xlim(137.5312, 4000)
 axs[0].set_ylim(10**-11, 0.5)
 axs[0].tick_params(which="both", labelsize=13, direction='in', right=True, top=True, bottom=False)
 axs[1].tick_params(which="both", labelsize=13, direction='in', right=True, pad=10)
@@ -1453,14 +1452,14 @@ axs[1].set_ylabel("Ratio to LO \n(No Jet Veto)\n",\
 
 axs[0].loglog()
 
-bin_centres=(bins[0:16] + bins[1:17])/2
 
-bin_centres=np.concatenate((np.array([0]), bin_centres, np.array([5000])))
+
+
 
 #The data were generated with a mass scale of 2TeV.
 axs[0].annotate(r'$\Lambda=2$TeV', (1800, 0.05),\
                fontsize=18,color="#3b3b3b")
-axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1200, 2*10**-11),\
+axs[0].annotate(r'NLL $p_{T, veto} = 35$GeV', (1000, 2*10**-11),\
                fontsize=14,color="#3b3b3b")
 
 
@@ -1475,7 +1474,7 @@ axs[0].fill_between(bin_centres, kg2nll_min/(bin_widths18*3000), kg2nll_max/(bin
 
 axs[0].step(bin_centres, abs(k6nll_centre)/(bin_widths18*3000), color='b', where='mid', label=r'$\frac{c_1}{\Lambda^4}2|\mathrm{Re}(\mathcal{M}^{(gg)}_{\mathrm{SM}}\mathcal{M}^{(8)*}_6)|$', linewidth=0.9)
 
-axs[0].fill_between(bin_centres, abs(k6nll_min)/(bin_widths18*3000), abs(k6nll_max)/(bin_widths18*3000),
+axs[0].fill_between(bin_centres, np.sign(k6nll_centre/k6nll_max)*abs(k6nll_min)/(bin_widths18*3000), abs(k6nll_max)/(bin_widths18*3000),
                      color='b', alpha=0.2, step='mid')
 
 axs[0].step(bin_centres, k62nll_centre/(bin_widths18*3000), color='r', where='mid', label=r'$\frac{c_1}{\Lambda^8}|\mathcal{M}^{(8)}_6|^2$', linewidth=0.9)
@@ -1487,7 +1486,7 @@ axs[0].fill_between(bin_centres, k62nll_min/(bin_widths18*3000), k62nll_max/(bin
 
 
 axs[0].legend(loc="lower left", fontsize=11, columnspacing=0.8)
-axs[0].set_xlim(200, 4000)
+axs[0].set_xlim(137.5312, 4000)
 axs[0].set_ylim(10**-11, 0.5)
 axs[0].set_xticks([200, 1000, 4000])
 axs[0].set_xticklabels([r"$200$", r"$1000$", r"$4000$"])
