@@ -33,6 +33,7 @@ and was multiplied by the bin width to keep it in line with outputs from other p
 
 - `Figures/figure_*` 
 One folder per figure; typically includes a plotting script (`.py`) and generated pdfs.
+
    -`Figures/figure_*_1percent`
       These are generated with a combined 1 percent theoretical/systematic error. 
    -`Figures/figure_*_comp*`
