@@ -46,4 +46,8 @@ Stores scripts and arrays for constructing SM predictions at different energies 
 - `Figures/QCD_EW_Combination/`
 Contains data and scripts combining QCD and electroweak corrections used for SM inputs.
 
+- `HelicityAmps/`
+Contains Mathematica notebooks showing how the Helicity Amplitudes were calculated for implementation into MCFM-RE. Furthermore the notebook used to generate the FeynRules folder
+for the cross check with MadGraph is also shown.
+
 
