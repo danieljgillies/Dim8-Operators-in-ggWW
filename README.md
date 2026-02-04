@@ -10,51 +10,40 @@ date: 06-02-25
 
 1. [Introduction](#introduction)
 2. [Layout of Repo](#layout)
-3. [Tools](#tools)
+
 
 
 ---
 
 ## Introduction <a name="introduction"></a>
 
-This GitHub repo is intended to make available the data and tools that were used for the paper "Dimension 8 Operators in WW production via gluon fusion" [arXiv: 2412.16020]. To this end we provide the raw data which was generated with MCFM-RE and MATRIX (please see documentation within to run these programs). We also provide a the tool used to generate the contour plots both with current data and with pseudodata. 
+This GitHub repo is intended to make available the data and tools that were used for the paper "Dimension 8 Operators in WW production via gluon fusion" [arXiv: 2412.16020]. 
 
 
 
 ## Layout <a name="layout"></a>
 
-Describe your methods here.
+- `Figures/`
+Contains all scripts, inputs (`.npy`), and outputs (`.pdf`) used to generate the paper’s plots. Each subfolder corresponds to a figure or a specific workflow.
 
----
+- `Figures/Data_numpy_for_figures`
+Contains .npy files with the raw distributions for 13TeV and 14TeV data. This is given for SM
+and BSM at some different orders. The BSM gg data from MCFM-RE was originally cross section density
+and was multiplied by the bin width to keep it in line with outputs from other programs.
 
-## Tools <a name="tools"></a>
+- `Figures/figure_*` 
+One folder per figure; typically includes a plotting script (`.py`) and generated pdfs.
 
-Present your results here, along with graphs or tables if needed.
+- `Figures/withdata_find_chisq_vals.py`
+Builds chi-squared contours from ATLAS data, including bin selection and EFT validity constraints.
 
----
+- `Figures/withpseudodata_find_chisq_vals.py`
+Generates contours from pseudodata with optional systematic errors and sampling.
 
-## References
+- `Figures/SM_Construction/`
+Stores scripts and arrays for constructing SM predictions at different energies and veto setups.
 
-Include references here in proper citation format.
+- `Figures/QCD_EW_Combination/`
+Contains data and scripts combining QCD and electroweak corrections used for SM inputs.
 
----
-
-### Notes:
-1. **LaTeX Math**: This template assumes the Markdown renderer supports MathJax or LaTeX.
-2. **Conversion to PDF**: Use a tool like Pandoc with a LaTeX engine:
-   ```bash
-   pandoc -s yourfile.md -o yourfile.pdf --pdf-engine=xelatex
-
-
-
-
-This folder is still currently under construction...
-
-
-ggdata was originally xsec density
-
-
-EW matching performs matching at EW
-
-SM constructs SM predictions
 
